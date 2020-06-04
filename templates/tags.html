@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <title> Streamtube </title>  
+    <meta name="robots" content="noindex">
+    
+    <meta name="viewport" content="width=device-width,  initial-scale=1">
+
+    <meta name="description" content="STREAMTUBE">
+
+<meta name="author" content="STREAMTUBE">
+
+<meta name="keywords" content="STREAMTUBE">
+
+<link rel="stylesheet" href="streamtube/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="assets/bootstrap/css/jquery-ui.css">
+
+<link rel="stylesheet" type="text/css" href="streamtube/fonts/font-awesome/css/font-awesome.min.css">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
+
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> 
+
+<link rel="stylesheet" type="text/css" href="streamtube/css/slick.css"/>
+
+<link rel="stylesheet" type="text/css" href="streamtube/css/slick-theme.css"/>
+
+<link rel="stylesheet" type="text/css" href="streamtube/css/style.css">
+
+
+<link rel="stylesheet" type="text/css" href="streamtube/css/responsive.css">
+
+<link rel="stylesheet" type="text/css" href="streamtube/css/responsive1.css">
+
+<link rel="stylesheet" href="admin-css/plugins/select2/select2.min.css">
+
+<link rel="shortcut icon" type="image/png" href="uploads/settings/a0c2858e7e8d97bc818f29a29cd4ff05f1d330fa.png"/>
+
+<style type="text/css">
+    
+    .ui-autocomplete{
+        z-index: 99999;
+    }
+
+</style>
+
+
+
+<script></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper_content">
+
+        <div class="header-search" id="search-section">
+    <form method="post" action="http://streamtube.streamhash.com/user/search" id="userSearch_min">
+        <div class="form-group no-margin pull-left width-95">
+            <input type="text" id="auto_complete_search_min" name="key" class="auto_complete_search search-query form-control" required placeholder="Search">
+        </div>
+    </form>
+
+    <a href="#" id="close-btn"><i class="fa fa-close"></i></a>   
+
+    <div class="clear-both"></div>
+</div>
+
+<div class="streamtube-nav" id="header-section">
+
+    <div class="row">
+
+        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+
+            <a href="#" class="hidden-xs"><img src="images/menu.png" class="toggle-icon"></a>
+
+            <a href="#" class="hidden-lg hidden-md hidden-sm"><img src="images/menu_white.png" class="toggle-icon"></a>
+
+            <a href="index.html"> 
+                                    <img src="uploads/settings/8ded0209d13ab8ee4491e8bf981084953681f728.png" class="logo-img">
+                            </a>
+
+        </div>
+
+        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 hidden-xs">
+
+            <div id="custom-search-input" class="">
+                <form method="post" action="http://streamtube.streamhash.com/user/search" id="userSearch">
+                <div class="input-group search-input">
+                    
+                        <input type="text" id="auto_complete_search" name="key" class="search-query form-control" required placeholder="Search" />
+                        <div class="input-group-btn">
+                            <button class="btn btn-danger" type="submit">
+                            <i class=" glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    
+                </div>
+                </form>
+            </div><!--custom-search-input end-->
+
+        </div>
+
+        <div class="col-lg-3 col-md-2 col-sm-3 col-xs-12 hidden-xs visible-sm visible-md visible-lg">
+
+                            <div class="y-button">
+                    <a href="login.html" class="y-signin">Login</a>
+                </div>
+
+                
+            
+            <ul class="nav navbar-nav pull-right" style="margin: 3.5px 0px">
+
+                                    
+                     
+                       
+                        <li  class="dropdown">
+                    
+                            <a href="#" class="dropdown-toggle language-icon" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-globe"></i> <b class="caret"></b></a>
+
+                            <ul class="dropdown-menu languages">
+
+                                
+                                    <li class="" ><a href="index.html" style="">en</a></li>
+                                
+                                    <li class="active" ><a href="login.html" style="background-color: #cc181e">es</a></li>
+                                                                
+                            </ul>
+                         
+                        </li>
+                
+                    
+                
+            </ul>
+
+        </div>
+
+        <!-- ======== RESPONSIVE HEADER VISIBLE IN MOBAILE VIEW====== -->
+
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 visible-xs hidden-sm hidden-md hidden-lg">
+            
+    
+    <section id="language-section">
+
+    <ul class="nav navbar-nav pull-right" style="margin: 3.5px 0px">
+
+        
+             
+               
+                <li  class="dropdown">
+            
+                    <a href="#" class="dropdown-toggle language-icon" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-globe"></i> <b class="caret"></b></a>
+
+                    <ul class="dropdown-menu languages1">
+
+                        
+                            <li class="" ><a href="index.html" style="">en</a></li>
+                        
+                            <li class="active" ><a href="login.html" style="background-color: #cc181e">es</a></li>
+                                                
+                    </ul>
+                 
+                </li>
+        
+            
+        
+    </ul>
+
+    </section>
+
+    
+        <div class="y-button pull-right" style="position: unset;">
+            <a href="login.html" class="y-signin" style="margin-left: 0px;" title="{tr('login')}}"><i class="fa fa-sign-in"></i></a>
+        </div><!--y-button end-->
+
+        
+        
+    <span class="search-cls pull-right" id="search-btn"><i class="fa fa-search top5"></i></span>
+    
+    <div class="clearfix"></div>
+
+</div>
+
+<div class="col-xs-12 visible-xs">
+    <ul class="mobile-header">
+        <li><a href="index.html" class="mobile-menu">
+            <i class="material-icons">home</i> 
+            <span class="hidden-xxxs">Home</span>
+        </a></li>
+        <li><a href="trending.html" class="mobile-menu">
+            <i class="material-icons">whatshot</i>
+            <span class="hidden-xxxs">Trending</span>
+        </a></li>
+        <li><a href="channels.html" class="mobile-menu">
+            <i class="material-icons">live_tv</i>
+            <span class="hidden-xxxs">Channels</span>
+        </a></li>
+        
+    </ul>
+
+</div>
+
+        <!-- ======== RESPONSIVE HEADER VISIBLE IN MOBAILE VIEW====== -->
+
+    </div><!--end of row-->
+
+</div><!--end of streamtube-nav-->
+
+        <div class="common-streamtube">
+
+            
+    <div class="y-content">
+        
+        <div class="row content-row">
+
+            <div class="y-menu col-sm-3 col-md-2 scroll">
+    <ul class="y-home menu1">
+        <li id="home">
+            <a href="index.html">
+                <img src="images/sidebar/home-grey.png" class="grey-img">
+                <img src="images/sidebar/home-red.png" class="red-img">
+                <span>Home</span>
+            </a>
+        </li>
+        <li id="trending">
+            <a href="trending.html">
+                <img src="images/sidebar/trending-grey.png" class="grey-img">
+                <img src="images/sidebar/trending-red.png" class="red-img">
+                <span>Trending</span>
+            </a>
+        </li>
+
+       
+        <li id="channels">
+            <a href="channels.html">
+                <img src="images/sidebar/search-grey.png" class="grey-img">
+                <img src="images/sidebar/search-red.png" class="red-img">
+                <span>Browse Channels</span>
+            </a>
+        </li>
+
+            
+    </ul>
+                
+            
+        <ul class="y-home menu1" style="margin-top: 10px;">
+
+            <h3>Channels</h3>
+
+                            <li id="channels_237">
+                    <a href="channel/237.html"><img src="uploads/channels/picture/1a6faf7d14a05548ae80ea0f588c90525a4bd17c.jpg">Fun Story</a>
+                </li>
+                            <li id="channels_238">
+                    <a href="channel/238.html"><img src="uploads/channels/picture/bccaecd203a3f0441fa2ce55f5cdab25417d2f9d.jpg">Valli&#039;s Kitchen</a>
+                </li>
+                            <li id="channels_240">
+                    <a href="channel/240.html"><img src="uploads/channels/picture/6ed1105bf0e118d669057c1c13b0230d9f3cdf10.jpg">Avenue Nightclub</a>
+                </li>
+                            <li id="channels_252">
+                    <a href="channel/252.html"><img src="uploads/channels/picture/25f1c22c5e12c99387590e9820293c195b83e0ca.jpg">Gaming</a>
+                </li>
+                            <li id="channels_496">
+                    <a href="channel/496.html"><img src="uploads/channels/picture/a72a809b6d92815083512ba4146971d06ccfeb5a.jpg">Beaches</a>
+                </li>
+                            <li id="channels_497">
+                    <a href="channel/497.html"><img src="uploads/channels/picture/9ad45e6d989a0bc9ca29019e7b6e7dc5bea6efd5.jpg">Baby girl playing </a>
+                </li>
+                            <li id="channels_499">
+                    <a href="channel/499.html"><img src="uploads/channels/picture/d65b1e68cd7586551bd0cab7dfcff368e25bc2b4.jpg">Nature sound</a>
+                </li>
+                            <li id="channels_501">
+                    <a href="channel/501.html"><img src="uploads/channels/picture/65115910b3b9e0d8359a8b517ff97bd491d4f409.jpg">Swans in Water</a>
+                </li>
+                          
+        </ul>
+
+    
+    <!-- ============PLAY STORE, APP STORE AND SHARE LINKS======= -->
+
+    
+        <ul class="menu-foot" style="margin-top: 10px;">
+
+            <h3>Download Our App</h3>
+
+            
+            <li>
+                <a href="https://play.google.com/store/apps/details?id=com.streamhash.streamtube&amp;hl=en" target="_blank">
+                    <img src="images/google-play.png">
+                </a>
+            </li>
+
+            
+            
+            <li>
+                <a href="https://itunes.apple.com/in/app/stream-you/id1401817517?mt=8&amp;ign-mpt=uo%3D4" target="_blank">
+                    <img src="images/app_store.png" >
+                </a>
+            </li>
+
+            
+        </ul>
+
+    
+    
+    <h3 class="menu-foot-head">Contact Us</h3>
+
+    <div class="nav-space">
+
+        
+        <a href="https://www.facebook.com/StreamHash/" target="_blank">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x social-fb"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse foot-share2"></i>
+            </span>
+        </a>
+
+        
+        
+        <a href="https://twitter.com/streamhash?lang=en" target="_blank">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x social-twitter"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse foot-share2"></i>
+            </span>
+        </a>
+
+        
+        
+        <a href="https://www.linkedin.com/company/13248425/" target="_blank">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x social-linkedin"></i>
+                <i class="fa fa fa-linkedin fa-stack-1x fa-inverse foot-share2"></i>
+            </span>
+        </a>
+
+        
+        
+        
+    </div>
+
+        
+            <div class="menu4 top nav-space">
+            <p>Sign in now to see your channels and recommendations!</p>
+            <form method="get" action="http://streamtube.streamhash.com/login">
+                <button type="submit">Login</button>
+            </form>
+        </div>   
+                 
+</div>
+            <div class="page-inner col-sm-9 col-md-10">
+
+                <div class="slide-area recom-area">
+                    <div class="box-head recom-head">
+                        <h3>"Animation" Videos</h3>
+                    </div>
+
+                    
+                        <div class="recommend-list row">
+
+                                                            <div class="slide-box recom-box">
+                                    <div class="slide-image recom-image">
+                                        <a href="video/247.html"><img src="uploads/images/252_1540634759_001.png" /></a>
+                                        
+                                    
+                                        <div class="video_duration">
+                                            00:00:30
+                                        </div>
+                                    </div><!--end of slide-image-->
+
+                                    <div class="video-details recom-details">
+                                        <div class="video-head">
+                                            <a href="video/247.html">Earth is cool</a>
+                                        </div>
+                                       
+
+                                        <span class="video_views">
+                                            <div><a href="channel/252.html">Gaming</a></div>
+                                            <i class="fa fa-eye"></i> 262 Views <b>.</b> 
+                                            26 Oct 2018
+                                        </span> 
+                                    </div><!--end of video-details-->
+                                </div><!--end of slide-box-->
+                                                            <div class="slide-box recom-box">
+                                    <div class="slide-image recom-image">
+                                        <a href="video/252.html"><img src="uploads/images/252_1540817412_003.png" /></a>
+                                        
+                                    
+                                        <div class="video_duration">
+                                            00:00:59
+                                        </div>
+                                    </div><!--end of slide-image-->
+
+                                    <div class="video-details recom-details">
+                                        <div class="video-head">
+                                            <a href="video/252.html">Night Sky in Motion</a>
+                                        </div>
+                                       
+
+                                        <span class="video_views">
+                                            <div><a href="channel/252.html">Gaming</a></div>
+                                            <i class="fa fa-eye"></i> 408 Views <b>.</b> 
+                                            28 Oct 2018
+                                        </span> 
+                                    </div><!--end of video-details-->
+                                </div><!--end of slide-box-->
+                                                            <div class="slide-box recom-box">
+                                    <div class="slide-image recom-image">
+                                        <a href="video/290.html"><img src="uploads/images/240_1550236834_001.png" /></a>
+                                        
+                                    
+                                        <div class="video_duration">
+                                            00:00:12
+                                        </div>
+                                    </div><!--end of slide-image-->
+
+                                    <div class="video-details recom-details">
+                                        <div class="video-head">
+                                            <a href="video/290.html">Wind Turbine</a>
+                                        </div>
+                                       
+
+                                        <span class="video_views">
+                                            <div><a href="channel/240.html">Avenue Nightclub</a></div>
+                                            <i class="fa fa-eye"></i> 1K Views <b>.</b> 
+                                            14 Feb 2019
+                                        </span> 
+                                    </div><!--end of video-details-->
+                                </div><!--end of slide-box-->
+                                                            <div class="slide-box recom-box">
+                                    <div class="slide-image recom-image">
+                                        <a href="video/293.html"><img src="uploads/images/b32182aec70eb643b1ddc9811269f67c9902974f.png" /></a>
+                                        
+                                    
+                                        <div class="video_duration">
+                                            00:00:32
+                                        </div>
+                                    </div><!--end of slide-image-->
+
+                                    <div class="video-details recom-details">
+                                        <div class="video-head">
+                                            <a href="video/293.html">View of Super Moon</a>
+                                        </div>
+                                       
+
+                                        <span class="video_views">
+                                            <div><a href="channel/240.html">Avenue Nightclub</a></div>
+                                            <i class="fa fa-eye"></i> 1.2K Views <b>.</b> 
+                                            07 Mar 2019
+                                        </span> 
+                                    </div><!--end of video-details-->
+                                </div><!--end of slide-box-->
+                                                        
+
+                        </div>
+
+                    
+                    <!--end of recommend-list-->
+
+                     
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div align="center" id="paglink"></div>
+                            </div>
+                        </div>
+
+                                    </div>
+
+                <!--end of slide-area-->
+
+                <div class="sidebar-back"></div> 
+            </div>
+
+        </div>
+    </div>
+
+
+        </div>
+
+        <div class="bottom-height"></div>
+<footer class="footer">
+    <div class="footer1 row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <div class="tube-image text-center">
+                                    <img src="uploads/settings/8ded0209d13ab8ee4491e8bf981084953681f728.png">
+                            </div>                                 
+        </div><!--end of col-sm-2-->
+
+        <div class="col-sm-9 col-md-9 col-lg-9 foot-content">
+
+            <ul class="term">
+                                                     
+                        <li><a  href="page_view/1.html" style="text-transform: capitalize;">About</a></li> | 
+                     
+                        <li><a  href="page_view/2.html" style="text-transform: capitalize;">Terms And Conditions</a></li> | 
+                     
+                        <li><a  href="page_view/3.html" style="text-transform: capitalize;">Privacy Policy</a></li> | 
+                     
+                        <li><a  href="page_view/4.html" style="text-transform: capitalize;">Contact Us</a></li> | 
+                     
+                        <li><a  href="page_view/9.html" style="text-transform: capitalize;">Help</a></li> | 
+                                                    <li><a href="index.html" >&#169; 2020  Streamtube </a></li>
+            </ul>
+        </div>   
+    </div><!--end of footer1-->
+</footer>
+
+    </div>
+    
+    <script src="streamtube/js/jquery.min.js"></script>
+
+<script src="streamtube/js/bootstrap.min.js"></script>
+
+<script src="assets/bootstrap/js/jquery-ui.js"></script>
+
+<script src="admin-css/plugins/input-mask/jquery.inputmask.js"></script>
+
+<script type="text/javascript" src="streamtube/js/jquery-migrate-1.2.1.min.js"></script>
+
+<script type="text/javascript" src="streamtube/js/slick.min.js"></script>
+
+<script type="text/javascript" src="streamtube/js/script.js"></script>
+
+<script src="admin-css/plugins/select2/select2.full.min.js"></script>
+
+<!-- input Mask -->
+
+<script src="admin-css/plugins/input-mask/jquery.inputmask.js"></script>
+
+<script src="admin-css/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+
+<script src="admin-css/plugins/input-mask/jquery.inputmask.extensions.js"></script>    
+
+<script src="assets/js/jstz.min.js"></script>
+
+<script type="text/javascript">
+
+    function updateTimezone() {
+
+        var timezone = jstz.determine().name();
+
+        $.post('timezone_save.html', {'timezone': timezone, 'is_json': 1})
+
+        .done(function(response) {
+
+            // $('#global-notifications-count').html(response.count);
+            
+        })
+        .fail(function(response) {
+            // console.log(response);
+        })
+        .always(function(response) {
+            // console.log(response);
+        });
+
+    }
+
+    $(window).load(function() {
+        
+        $('.placeholder').each(function () {
+            var imagex = jQuery(this);
+            var imgOriginal = imagex.data('src');
+            $(imagex).attr('src', imgOriginal);
+        });
+        
+        $('#preloader').fadeOut(2000);
+
+    });
+
+    $(document).ready(function() {
+
+        //Initialize Select2 Elements
+
+        $(".select2").select2();
+
+        $("[data-mask]").inputmask();
+
+        $('.video-list-slider').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 5,
+            arrows: true,
+            slidesToScroll: 5,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    } 
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+              ]
+        
+        });
+
+ 
+        $('.box').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 5,
+            arrows: true,
+            slidesToScroll: 5,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    } 
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+              ]
+        
+        });
+            });
+
+
+    $(document).on("click", ".notification-link a", function(){ 
+
+        $.post('login.html', {'is_json': 1})
+
+        .done(function(response) {
+
+            //$('#global-notifications-count').html(response.count);
+            return true;
+            
+        })
+        .fail(function(response) {
+            console.log(response);
+        })
+        .always(function(response) {
+            console.log(response);
+        });
+
+
+    });
+
+    jQuery(document).ready( function () {
+        //autocomplete
+        jQuery("#auto_complete_search").autocomplete({
+            source: "http://streamtube.streamhash.com/user/searchall",
+            minLength: 1,
+            select: function(event, ui){
+
+                // set the value of the currently focused text box to the correct value
+
+                if (event.type == "autocompleteselect"){
+                    
+                    // console.log( "logged correctly: " + ui.item.value );
+
+                    var username = ui.item.value;
+
+                    if(ui.item.value == 'View All') {
+
+                        // console.log('View AALLLLLLLLL');
+
+                        window.location.href = "user/searchbbd9.html?q=all";
+
+                    } else {
+                        // console.log("User Submit");
+
+                        jQuery('#auto_complete_search').val(ui.item.value);
+
+                        jQuery('#userSearch').submit();
+                    }
+
+                }                        
+            }      // select
+
+        }); 
+
+        jQuery("#auto_complete_search_min").autocomplete({
+            source: "http://streamtube.streamhash.com/user/searchall",
+            minLength: 1,
+            select: function(event, ui){
+
+                // set the value of the currently focused text box to the correct value
+
+                if (event.type == "autocompleteselect"){
+                    
+                    // console.log( "logged correctly: " + ui.item.value );
+
+                    var username = ui.item.value;
+
+                    if(ui.item.value == 'View All') {
+
+                        // console.log('View AALLLLLLLLL');
+
+                        window.location.href = "user/searchbbd9.html?q=all";
+
+                    } else {
+                        // console.log("User Submit");
+
+                        jQuery('#auto_complete_search_min').val(ui.item.value);
+
+                        jQuery('#userSearch_min').submit();
+                    }
+
+                }                        
+            }      // select
+
+        }); 
+
+    });
+
+   function notificationsStatusUpdate(){
+
+        $.post('login.html', {'is_json': 1})
+
+        .done(function(response) {
+
+            var x = document.getElementById("viewAll");
+
+            if (response.count == 0) {
+
+                x.style.display = "none";
+            } 
+        })
+        .fail(function(response) {
+            // console.log(response);
+        })
+        .always(function(response) {
+            // console.log(response);
+        });
+   }
+
+</script>
+
+
+<script type="text/javascript">
+            $("#tag_name2").addClass("active");
+    </script>
+
+
+</body>
+
+
+</html>

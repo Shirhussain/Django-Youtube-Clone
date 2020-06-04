@@ -1,0 +1,1168 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <title> Streamtube </title>  
+    {% include "headlink.html" %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'streamtube/css/custom-style.css' %}">
+
+    <style>
+        #c4-header-bg-container {
+            background-image: url({% static 'uploads/channels/cover/e49110c37530f33740c416b193bc3b44ecbfcd2f.jpg' %});
+        }
+        
+        @media  screen and (-webkit-min-device-pixel-ratio: 1.5),
+        screen and (min-resolution: 1.5dppx) {
+            #c4-header-bg-container {
+                background-image: url({% static 'uploads/channels/cover/e49110c37530f33740c416b193bc3b44ecbfcd2f.jpg' %});
+            }
+        }
+        
+        #c4-header-bg-container .hd-banner-image {
+            background-image: url({% static 'uploads/channels/cover/e49110c37530f33740c416b193bc3b44ecbfcd2f.jpg' %});
+        }
+        
+        .payment_class {
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 38px;
+            line-height: 19px;
+            padding: 0 !important;
+            font-weight: bolder !important;
+        }
+        
+        .switch {
+            display: inline-block;
+            height: 23px;
+            position: relative;
+            width: 45px;
+            vertical-align: middle;
+        }
+        
+        .switch input {
+            display: none;
+        }
+        
+        .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: all 0.4s ease 0s;
+        }
+        
+        .slider::before {
+            background-color: white;
+            bottom: 4px;
+            content: "";
+            height: 16px;
+            left: 0px;
+            position: absolute;
+            transition: all 0.4s ease 0s;
+            width: 16px;
+        }
+        
+        input:checked + .slider {
+            background-color: #51af33;
+        }
+        
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196f3;
+        }
+        
+        input:checked + .slider::before {
+            transform: translateX(26px);
+        }
+        
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round::before {
+            border-radius: 50%;
+        }
+    </style>
+
+
+    <script></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper_content">
+        {% include "navbar.html" %}
+
+        <div class="common-streamtube">
+
+
+            <div class="y-content">
+
+                <div class="row content-row">
+                    {% include "menu.html" %}
+                    <div class="page-inner col-sm-9 col-md-10">
+
+                        <div class="slide-area1">
+
+                            <div class="branded-page-v2-top-row">
+
+                                <div class="branded-page-v2-header channel-header yt-card">
+
+                                    <div id="gh-banner">
+
+                                        <div id="c4-header-bg-container" class="c4-visible-on-hover-container has-custom-banner">
+
+                                            <div class="hd-banner">
+                                                <div class="hd-banner-image"></div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div id="flash_message_ajax"></div>
+
+
+
+
+
+
+                                    <div class="channel-content-spacing display-inline">
+
+                                        <div>
+
+                                            <div class="pull-left">
+                                                <a class="channel-header-profile-image spf-link" href="#">
+                                                    <div style="background-image:url({% static 'uploads/channels/picture/d65b1e68cd7586551bd0cab7dfcff368e25bc2b4.jpg' %});" class="channel-header-profile-image1"></div>
+                                                </a>
+                                            </div>
+
+                                            <div class="pull-left width-40">
+                                                <h1 class="st_channel_heading text-uppercase">Nature sound</h1>
+                                                <p class="subscriber-count">2 Subscribers</p>
+                                            </div>
+
+                                            <div class="pull-right upload_a btn-space width-60 text-right">
+
+
+                                            </div>
+
+                                            <div class="clearfix"></div>
+
+                                        </div>
+
+                                        <div id="channel-subheader" class="clearfix branded-page-gutter-padding appbar-content-trigger">
+
+                                            <ul id="channel-navigation-menu" class="clearfix nav nav-tabs" role="tablist">
+
+                                                <li role="presentation" class="active">
+                                                    <a href="#home1" class="yt-uix-button  spf-link  yt-uix-sessionlink yt-uix-button-epic-nav-item yt-uix-button-size-default" aria-controls="home" role="tab" data-toggle="tab">
+                                                        <span class="yt-uix-button-content hidden-xs">Home</span>
+                                                        <span class="visible-xs"><i class="fa fa-home channel-tab-icon"></i></span>
+                                                    </a>
+                                                </li>
+                                                <li role="presentation" id="videos_sec">
+                                                    <a href="#videos" class="yt-uix-button  spf-link  yt-uix-sessionlink yt-uix-button-epic-nav-item yt-uix-button-size-default" aria-controls="videos" role="tab" data-toggle="tab">
+                                                        <span class="yt-uix-button-content hidden-xs">Videos</span>
+                                                        <span class="visible-xs"><i class="fa fa-video-camera channel-tab-icon"></i></span>
+                                                    </a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#about" class="yt-uix-button spf-link  yt-uix-sessionlink yt-uix-button-epic-nav-item yt-uix-button-size-default" aria-controls="about" role="tab" data-toggle="tab">
+                                                        <span class="yt-uix-button-content hidden-xs">About</span>
+                                                        <span class="visible-xs"><i class="fa fa-info channel-tab-icon"></i></span>
+                                                    </a>
+                                                </li>
+
+                                                <li role="presentation">
+                                                    <a href="#playlist" class="yt-uix-button spf-link yt-uix-sessionlink yt-uix-button-epic-nav-item yt-uix-button-size-default" aria-controls="playlist" role="tab" data-toggle="tab">
+                                                        <span class="yt-uix-button-content hidden-xs">Playlist</span>
+                                                        <span class="visible-xs"><i class="fa fa-list channel-tab-icon"></i></span>
+                                                    </a>
+                                                </li>
+
+
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <ul class="tab-content"  style="padding-left: 0px;">
+
+                                <li role="tabpanel" class="tab-pane active" id="home1">
+
+                                    <div class="feed-item-dismissable">
+
+                                        <div class="feed-item-main feed-item-no-author">
+
+                                            <div class="feed-item-main-content">
+
+                                                <div class="shelf-wrapper clearfix">
+
+                                                    <div class="big-section-main new-history1">
+
+                                                        <div class="content-head">
+                                                            <h4 style="color: #000;">What to watch next</h4>
+                                                        </div>
+
+                                                        <div class="lohp-shelf-content row">
+
+
+
+                                                            <div class="lohp-medium-shelves-container col-md-12">                      
+                                                                <div class="row">
+
+
+
+
+                                                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 channel-view">
+
+                                                                        <div class="slide-box recom-box big-box-slide mt-0 mb-15">
+
+                                                                            <div class="slide-image">
+                                                                                <a href="video/390.html">
+
+                                                                                    <img src="{% static 'streamtube/images/placeholder.gif' %}" data-src="http://streamtube.streamhash.com/uploads/images/7f3fe1bdf173ecf5ea3ee5b2da1869d07ba6a0d7.jpg" class="slide-img1 placeholder" /></a>
+
+
+                                                                                    <div class="video_duration">
+                                                                                        04:00:46
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="video-details">
+
+                                                                                </div>
+
+                                                                                <span class="video_views">
+
+                                                                                  <div class="video-head">
+
+                                                                                    <!-- <img src="http://streamtube.streamhash.com/uploads/images/7f3fe1bdf173ecf5ea3ee5b2da1869d07ba6a0d7.jpg"> -->
+
+                                                                                    <a href="video/390.html">Nature Sound </a>
+
+                                                                                    <i class="fa fa-eye"></i> 87 Views
+                                                                                    09 Apr 2020
+
+                                                                                </div>
+
+                                                                            </span>
+
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 channel-view">
+
+                                                                        <div class="slide-box recom-box big-box-slide mt-0 mb-15">
+
+                                                                            <div class="slide-image">
+                                                                                <a href="video/392.html">
+
+                                                                                    <img src="{% static 'streamtube/images/placeholder.gif' %}" data-src="http://streamtube.streamhash.com/uploads/images/499_1586585293_001.png" class="slide-img1 placeholder" /></a>
+
+
+                                                                                    <div class="video_duration">
+                                                                                        00:00:09
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="video-details">
+
+                                                                                </div>
+
+                                                                                <span class="video_views">
+
+                                                                                  <div class="video-head">
+
+                                                                                    <!-- <img src="http://streamtube.streamhash.com/uploads/images/499_1586585293_001.png"> -->
+
+                                                                                    <a href="video/392.html">River Water Sound</a>
+
+                                                                                    <i class="fa fa-eye"></i> 76 Views
+                                                                                    10 Apr 2020
+
+                                                                                </div>
+
+                                                                            </span>
+
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 channel-view">
+
+                                                                        <div class="slide-box recom-box big-box-slide mt-0 mb-15">
+
+                                                                            <div class="slide-image">
+                                                                                <a href="video/394.html">
+
+                                                                                    <img src="{% static 'streamtube/images/placeholder.gif' %}" data-src="http://streamtube.streamhash.com/uploads/images/499_1586585762_001.png" class="slide-img1 placeholder" /></a>
+
+
+                                                                                    <div class="video_duration">
+                                                                                        00:00:15
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="video-details">
+
+                                                                                </div>
+
+                                                                                <span class="video_views">
+
+                                                                                  <div class="video-head">
+
+                                                                                    <!-- <img src="http://streamtube.streamhash.com/uploads/images/499_1586585762_001.png"> -->
+
+                                                                                    <a href="video/394.html">Thunder Storm</a>
+
+                                                                                    <i class="fa fa-eye"></i> 43 Views
+                                                                                    10 Apr 2020
+
+                                                                                </div>
+
+                                                                            </span>
+
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 channel-view">
+
+                                                                        <div class="slide-box recom-box big-box-slide mt-0 mb-15">
+
+                                                                            <div class="slide-image">
+                                                                                <a href="video/396.html">
+
+                                                                                    <img src="{% static 'streamtube/images/placeholder.gif' %}" data-src="http://streamtube.streamhash.com/uploads/images/499_1586755048_001.png" class="slide-img1 placeholder" /></a>
+
+
+                                                                                    <div class="video_duration">
+                                                                                        00:00:21
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="video-details">
+
+                                                                                </div>
+
+                                                                                <span class="video_views">
+
+                                                                                  <div class="video-head">
+
+                                                                                    <!-- <img src="http://streamtube.streamhash.com/uploads/images/499_1586755048_001.png"> -->
+
+                                                                                    <a href="video/396.html">The Sound of Creek </a>
+
+                                                                                    <i class="fa fa-eye"></i> 21 Views
+                                                                                    12 Apr 2020
+
+                                                                                </div>
+
+                                                                            </span>
+
+                                                                        </div>
+
+                                                                    </div>
+
+
+
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+                                <li role="tabpanel" class="tab-pane" id="videos">
+
+                                    <div class="recom-area abt-sec">
+
+                                        <div class="abt-sec-head">
+
+                                            <div class="new-history1">
+
+                                                <div class="content-head">
+
+                                                    <div>
+                                                        <h4 style="color: #000;">Videos&nbsp;&nbsp;
+                                                        </h4>
+                                                    </div>
+
+                                                </div>
+                                                <!--end of content-head-->
+
+
+                                                <ul class="history-list">
+
+
+                                                    <li class="sub-list row border-0">
+
+                                                        <div class="main-history">
+
+                                                            <div class="history-image">
+
+                                                                <a href="video/396.html">
+                                                                    <!-- <img src="http://streamtube.streamhash.com/uploads/images/499_1586755048_001.png"> -->
+                                                                    <img src="{% static 'streamtube/images/placeholder.gif' %}" data-src="http://streamtube.streamhash.com/uploads/images/499_1586755048_001.png" class="slide-img1 placeholder" />
+                                                                </a> 
+
+
+                                                                <div class="video_duration">
+                                                                    00:00:21
+                                                                </div>
+
+                                                            </div>
+                                                            <!--history-image-->
+
+                                                            <div class="history-title">
+
+                                                                <div class="history-head row">
+
+                                                                    <div class="cross-title2">
+                                                                        <h5 class="payment_class unset-height">
+
+                                                                            <a href="video/396.html">The Sound of Creek </a>
+                                                                        </h5>
+
+                                                                        <span class="video_views">
+                                                                            <i class="fa fa-eye"></i> 21 Views <b>.</b> 
+                                                                            12 Apr 2020
+                                                                        </span>
+                                                                    </div>
+
+                                                                    <!--end of history-head-->
+
+
+                                                                    <div class="description">
+                                                                        <p>A stream burbles as it travels along its bed, bubbling over rocks and branches. The verb burble captures both the movement of the water and the&nbsp;<strong>sound</strong>&nbsp;it makes as it moves.</p>
+                                                                    </div>
+                                                                    <!--end of description-->
+
+                                                                    <span class="stars">
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                    </span>
+
+                                                                </div>
+                                                                <!--end of history-title-->
+
+                                                            </div>
+                                                            <!--end of main-history-->
+
+                                                        </div>
+
+                                                    </li>
+
+
+                                                    <li class="sub-list row border-0">
+
+                                                        <div class="main-history">
+
+                                                            <div class="history-image">
+
+                                                                <a href="video/394.html">
+                                                                    <!-- <img src="http://streamtube.streamhash.com/uploads/images/499_1586585762_001.png"> -->
+                                                                    <img src="{% static 'streamtube/images/placeholder.gif' %}" data-src="http://streamtube.streamhash.com/uploads/images/499_1586585762_001.png" class="slide-img1 placeholder" />
+                                                                </a> 
+
+
+                                                                <div class="video_duration">
+                                                                    00:00:15
+                                                                </div>
+
+                                                            </div>
+                                                            <!--history-image-->
+
+                                                            <div class="history-title">
+
+                                                                <div class="history-head row">
+
+                                                                    <div class="cross-title2">
+                                                                        <h5 class="payment_class unset-height">
+
+                                                                            <a href="video/394.html">Thunder Storm</a>
+                                                                        </h5>
+
+                                                                        <span class="video_views">
+                                                                            <i class="fa fa-eye"></i> 43 Views <b>.</b> 
+                                                                            10 Apr 2020
+                                                                        </span>
+                                                                    </div>
+
+                                                                    <!--end of history-head-->
+
+
+                                                                    <div class="description">
+                                                                        <p>Weather gets cool and turns beautiful&nbsp;</p>
+                                                                    </div>
+                                                                    <!--end of description-->
+
+                                                                    <span class="stars">
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                    </span>
+
+                                                                </div>
+                                                                <!--end of history-title-->
+
+                                                            </div>
+                                                            <!--end of main-history-->
+
+                                                        </div>
+
+                                                    </li>
+
+
+                                                    <li class="sub-list row border-0">
+
+                                                        <div class="main-history">
+
+                                                            <div class="history-image">
+
+                                                                <a href="video/392.html">
+                                                                    <!-- <img src="http://streamtube.streamhash.com/uploads/images/499_1586585293_001.png"> -->
+                                                                    <img src="{% static 'streamtube/images/placeholder.gif' %}" data-src="http://streamtube.streamhash.com/uploads/images/499_1586585293_001.png" class="slide-img1 placeholder" />
+                                                                </a> 
+
+
+                                                                <div class="video_duration">
+                                                                    00:00:09
+                                                                </div>
+
+                                                            </div>
+                                                            <!--history-image-->
+
+                                                            <div class="history-title">
+
+                                                                <div class="history-head row">
+
+                                                                    <div class="cross-title2">
+                                                                        <h5 class="payment_class unset-height">
+
+                                                                            <a href="video/392.html">River Water Sound</a>
+                                                                        </h5>
+
+                                                                        <span class="video_views">
+                                                                            <i class="fa fa-eye"></i> 76 Views <b>.</b> 
+                                                                            10 Apr 2020
+                                                                        </span>
+                                                                    </div>
+
+                                                                    <!--end of history-head-->
+
+
+                                                                    <div class="description">
+                                                                        <p>Best and good water can drink can swim&nbsp;</p>
+                                                                    </div>
+                                                                    <!--end of description-->
+
+                                                                    <span class="stars">
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                    </span>
+
+                                                                </div>
+                                                                <!--end of history-title-->
+
+                                                            </div>
+                                                            <!--end of main-history-->
+
+                                                        </div>
+
+                                                    </li>
+
+
+                                                    <li class="sub-list row border-0">
+
+                                                        <div class="main-history">
+
+                                                            <div class="history-image">
+
+                                                                <a href="video/390.html">
+                                                                    <!-- <img src="http://streamtube.streamhash.com/uploads/images/7f3fe1bdf173ecf5ea3ee5b2da1869d07ba6a0d7.jpg"> -->
+                                                                    <img src="{% static 'streamtube/images/placeholder.gif' %}" data-src="http://streamtube.streamhash.com/uploads/images/7f3fe1bdf173ecf5ea3ee5b2da1869d07ba6a0d7.jpg" class="slide-img1 placeholder" />
+                                                                </a> 
+
+
+                                                                <div class="video_duration">
+                                                                    04:00:46
+                                                                </div>
+
+                                                            </div>
+                                                            <!--history-image-->
+
+                                                            <div class="history-title">
+
+                                                                <div class="history-head row">
+
+                                                                    <div class="cross-title2">
+                                                                        <h5 class="payment_class unset-height">
+
+                                                                            <a href="video/390.html">Nature Sound </a>
+                                                                        </h5>
+
+                                                                        <span class="video_views">
+                                                                            <i class="fa fa-eye"></i> 87 Views <b>.</b> 
+                                                                            09 Apr 2020
+                                                                        </span>
+                                                                    </div>
+
+                                                                    <!--end of history-head-->
+
+
+                                                                    <div class="description">
+                                                                        <p><strong>Natural sounds</strong>&nbsp;are any&nbsp;<strong>sounds</strong>&nbsp;produced by non-human organisms as well as those generated by&nbsp;<strong>natural</strong>, non-biological sources within their normal soundscapes. It is a category whose definition is open for discussion.&nbsp;<strong>Natural sounds</strong>&nbsp;create an acoustic space.</p>
+                                                                    </div>
+                                                                    <!--end of description-->
+
+                                                                    <span class="stars">
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                                                                    </span>
+
+                                                                </div>
+                                                                <!--end of history-title-->
+
+                                                            </div>
+                                                            <!--end of main-history-->
+
+                                                        </div>
+
+                                                    </li>
+
+
+                                                    <span id="videos_list"></span>
+
+                                                    <div id="video_loader" style="display: none;">
+
+                                                        <h1 class="text-center"><i class="fa fa-spinner fa-spin" style="color:#ff0000"></i></h1>
+
+                                                    </div>
+
+                                                    <div class="clearfix"></div>
+
+                                                    <button class="pull-right btn btn-info mb-15" onclick="getVideos()" style="color: #fff">View More</button>
+
+                                                    <div class="clearfix"></div>
+
+                                                </ul>
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+                                <li role="tabpanel" class="tab-pane" id="about">
+
+                                    <div class="recom-area abt-sec">
+                                        <div class="abt-sec-head">
+                                            <h5><p>Adorable sound&nbsp;</p>
+                                            </h5>
+                                        </div>
+                                    </div>
+
+                                </li>
+
+                                <li role="tabpanel" class="tab-pane" id="playlist">
+
+                                    <div class="recom-area abt-sec">
+
+                                        <div class="abt-sec-head">
+
+                                            <div class="new-history1">
+
+                                                <div class="content-head">
+
+                                                    <div>
+
+                                                        <h4 style="color: #000; display: inline;">
+                                                            Playlists&nbsp;&nbsp;
+                                                        </h4>
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="recommend-list row">
+
+
+                                                    <div id="new_playlist">
+
+                                                    </div>
+
+                                                    <img src="{% static 'images/no-result.jpg' %}" class="img-responsive auto-margin" id="no_playlist"> 
+
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+                                <li role="tabpanel" class="tab-pane" id="payment_managment">
+
+                                    <div class="recom-area abt-sec">
+
+                                        <div class="abt-sec-head">
+
+                                            <div class="new-history1">
+
+                                                <div class="content-head">
+                                                    <div>
+                                                        <h4 style="color: #000;">Payment Videos</h4>
+                                                    </div>
+                                                </div>
+                                                <!--end of content-head-->
+
+                                                <!-- dashboard -->
+                                                <div class="row">
+
+                                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+                                                        <div class="ppv-dashboard">
+
+                                                            <div class="ppv-dashboard-left">
+                                                                <img src="{% static 'images/dollar.png' %}">
+                                                            </div>
+
+                                                            <div class="ppv-dashboard-right">
+                                                                <p>Revenue</p>
+                                                                <h2 class="">$ 0</h2>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                                <!-- dashboard -->
+
+
+                                                <img src="{% static 'images/no-result.jpg' %}" class="img-responsive auto-margin"> 
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+                            </ul>
+
+                            <div class="sidebar-back"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PLAYLIST POPUPSTART -->
+
+            <div class="modal fade global_playlist_id_modal" id="global_playlist_id_499" role="dialog">
+
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <!-- if user logged in let create, update playlist -->
+
+
+                        <div class="menu4 top nav-space">
+
+                            <p>Sign in to add this video to a playlist</p>
+
+                            <a href="login.html" class="btn btn-sm btn-primary">Login</a>
+
+                        </div>
+
+
+                    </div>
+                    <!-- modal content ends -->
+
+                </div>
+
+            </div>
+
+            <!-- PLAYLIST POPUPEND -->
+
+
+        </div>
+
+        <div class="bottom-height"></div>
+    </div>
+
+    {% include "scripts.html" %}
+
+    <script>
+
+        function change_adstatus(val, id) {
+
+            var url = "ad_request.html";
+
+            $.ajax({
+                url: url,
+                method: "POST",
+                data: {
+                    id: id,
+                    status: val
+                },
+                success: function(result) {
+
+                    if (result.success == true) {
+
+                        if (result.status == 1) {
+
+                            $("#ad_status_" + id).html("Disable Ad");
+
+                        } else {
+
+                            $("#ad_status_" + id).html("Enable Ad");
+                        }
+
+                        alert("Ad Status Changed Successfully");
+                    }
+                }
+
+            });
+
+        }
+
+        var stopScroll = false;
+
+        var searchLength = "4";
+
+        var stopPaymentScroll = false;
+
+        var searchPaymentLength = "0";
+
+        function getVideos() {
+
+            if (searchLength > 0) {
+
+                videos(searchLength);
+
+            }
+        }
+
+        function getPaymentVideos() {
+
+            if (searchPaymentLength > 0) {
+
+                payment_videos(searchPaymentLength);
+
+            }
+        }
+
+        /*$(window).scroll(function() {
+
+            if($(window).scrollTop() == $(document).height() - $(window).height()) {
+
+                var value = $('ul#channel-navigation-menu').find('li.active').attr('id');
+
+                //alert(value);
+
+                if (value == 'videos_sec') {
+
+                    if (!stopScroll) {
+
+                        // console.log("New Length " +searchLength);
+
+                        if (searchLength > 0) {
+
+                            videos(searchLength);
+
+                        }
+
+                    }
+                }
+
+                if (value == 'payment_managment_sec') {
+
+                    if (!stopPaymentScroll) {
+
+                        // console.log("New Length " +searchLength);
+
+                        if (searchPaymentLength > 0) {
+
+                            payment_videos(searchPaymentLength);
+
+                        }
+
+                    }
+                }
+
+            }
+
+        });*/
+
+        function videos(cnt) {
+
+            channel_id = "499";
+
+            $.ajax({
+
+                type: "post",
+
+                url: "http://streamtube.streamhash.com/partialVideos",
+
+                beforeSend: function() {
+
+                    $("#video_loader").fadeIn();
+                },
+
+                data: {
+                    skip: cnt,
+                    channel_id: channel_id
+                },
+
+                async: false,
+
+                success: function(data) {
+
+                    $("#videos_list").append(data.view);
+
+                    if (data.length == 0) {
+
+                        stopScroll = true;
+
+                    } else {
+
+                        stopScroll = false;
+
+                        // console.log(searchLength);
+
+                        // console.log(data.length);
+
+                        searchLength = parseInt(searchLength) + data.length;
+
+                        // console.log("searchLength" +searchLength);
+
+                    }
+
+                },
+
+                complete: function() {
+
+                    $("#video_loader").fadeOut();
+
+                },
+
+                error: function(data) {
+
+                },
+
+            });
+
+        }
+
+        function payment_videos(cnt) {
+
+            channel_id = "499";
+
+            $.ajax({
+
+                type: "post",
+
+                url: "http://streamtube.streamhash.com/payment_mgmt_videos",
+
+                beforeSend: function() {
+
+                    $("#payment_video_loader").fadeIn();
+                },
+
+                data: {
+                    skip: cnt,
+                    channel_id: channel_id
+                },
+
+                async: false,
+
+                success: function(data) {
+
+                    $("#payment_videos_list").append(data.view);
+
+                    if (data.length == 0) {
+
+                        stopPaymentScroll = true;
+
+                    } else {
+
+                        stopPaymentScroll = false;
+
+                        // console.log(searchLength);
+
+                        // console.log(data.length);
+
+                        searchPaymentLength = parseInt(searchPaymentLength) + data.length;
+
+                        // console.log("searchLength" +searchLength);
+
+                    }
+
+                },
+
+                complete: function() {
+
+                    $("#payment_video_loader").fadeOut();
+
+                },
+
+                error: function(data) {
+
+                },
+
+            });
+
+        }
+
+        $(document).on('ready', function() {
+
+            $("#copy-embed1").on("click", function() {
+                $('#popup1').modal('hide');
+            });
+
+            $('.global_playlist_id').on('click', function(event) {
+
+                event.preventDefault();
+
+                var channel_id = $(this).attr('id');
+
+                $('#global_playlist_id_' + channel_id).modal('show');
+
+            });
+
+        });
+
+        function playlist_save(channel_id) {
+
+            var title = $("#playlist_title").val();
+
+            var privacy = $("#playlist_privacy").val();
+
+            var video_tapes_id = $("#video_tapes_id").val();
+
+            var playlist_type = "CHANNEL";
+
+            if (title == '') {
+
+                alert("Title for playlist required");
+
+            }
+            if (video_tapes_id == null) {
+
+                alert("Please Choose videos to create playlist");
+
+            } else {
+
+                $.ajax({
+
+                    url: "http://streamtube.streamhash.com/channel/playlists/save",
+                    data: {
+                        title: title,
+                        channel_id: channel_id,
+                        privacy: privacy,
+                        video_tapes_id: video_tapes_id,
+                        playlist_type: playlist_type
+                    },
+
+                    type: "post",
+                    success: function(data) {
+
+                        if (data.success) {
+
+                            $('#playlist_title').removeAttr('value');
+
+                            $('#video_tapes_id').val(null).trigger('change');
+
+                            $('#global_playlist_id_' + channel_id).modal('hide');
+
+                            $('#no_playlist').hide();
+
+                            $('#new_playlist').append(data.new_playlist_content);
+
+                            alert(data.message);
+
+                        } else {
+
+                            alert(data.error_messages);
+
+                        }
+
+                    },
+                    error: function(data) {
+
+                    },
+                });
+            }
+
+        }
+
+    </script>
+
+
+    <script type="text/javascript">
+        $("#channels_499").addClass("active");
+    </script>
+
+
+</body>
+</html>

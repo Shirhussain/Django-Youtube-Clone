@@ -1,0 +1,1936 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <head>
+    <title>Streamtube</title>
+    {% include "headlink.html" %}
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Wind Turbine" />
+    <meta property="og:description" content="Wind Turbine" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="Streamtube" />
+    <meta
+      property="og:image"
+      content="http://streamtube.streamhash.com/uploads/images/240_1550236834_001.png"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="Wind Turbine" />
+    <meta name="twitter:title" content="Wind Turbine" />
+    <meta
+      name="twitter:image:src"
+      content="http://streamtube.streamhash.com/uploads/images/240_1550236834_001.png"
+    />
+
+    <link rel="stylesheet" href="{% static 'assets/css/star-rating.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/toast.style.css' %}" />
+
+    <style type="text/css">
+      .sub-comhead .rating-md {
+        font-size: 11px;
+      }
+      .thumb-class {
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .common-streamtube {
+        min-height: 0px !important;
+      }
+      textarea[name="comments"] {
+        resize: none;
+      }
+      #timings {
+        padding: 5px;
+      }
+      .ad_progress {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        opacity: 0.8;
+        background: #000;
+        color: #fff;
+        font-size: 12px;
+      }
+      .progress-bar-div {
+        width: 100%;
+        height: 5px;
+        background: #e0e0e0;
+        /*padding: 3px;*/
+        border-radius: 3px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+      }
+      .progress-bar-fill-div {
+        display: block;
+        height: 5px;
+        background: #cc181e;
+        border-radius: 3px;
+        /*transition: width 250ms ease-in-out;*/
+        /*transition : width 10s ease-in-out;*/
+      }
+      th {
+        border-top: none;
+      }
+
+      [id="toggle-heart"] {
+        position: absolute;
+        left: -100vw;
+      }
+    </style>
+
+    <script></script>
+  </head>
+
+  <body>
+    <div class="wrapper_content">
+      {% include "navbar.html" %}
+
+      <div class="common-streamtube">
+        <div class="y-content">
+          <div class="row y-content-row">
+            {% include "menu.html" %}
+            <div class="page-inner col-sm-9 col-md-10 profile-edit">
+              <div class="profile-content mar-0">
+                <div id="flash_message_ajax"></div>
+
+                <div class="row no-margin">
+                  <div class="col-sm-12 col-md-8 play-video">
+                    <div class="single-video-sec">
+                      <!-- Main Video Configuration -->
+
+                      <div
+                        class="embed-responsive embed-responsive-16by9"
+                        id="main_video_setup_error"
+                        style="display: none;"
+                      >
+                        <img
+                          src="{% static 'error.jpg' %}"
+                          class="error-image"
+                          alt="Streamtube - Main Video"
+                        />
+                      </div>
+
+                      <div
+                        class="embed-responsive embed-responsive-16by9"
+                        id="main_video_ad"
+                        style="display: none;"
+                      >
+                        <img
+                          src="#"
+                          class="error-image"
+                          alt="Streamtube - Main Video Ad"
+                          id="ad_image"
+                        />
+
+                        <div class="click_here_ad" style="display: none;"></div>
+
+                        <div class="ad_progress">
+                          <div id="timings">
+                            Ad : <span class="seconds"></span>
+                          </div>
+                          <div class="clearfix"></div>
+                          <div id="progress"></div>
+                        </div>
+                      </div>
+
+                      <div id="main-video-player"></div>
+                      <div
+                        class="embed-responsive embed-responsive-16by9"
+                        id="flash_error_display"
+                        style="display: none;"
+                      >
+                        <div
+                          style="
+                            width: 100%;
+                            background: black;
+                            color: #fff;
+                            height: 100%;
+                          "
+                        >
+                          <div style="text-align: center; align-items: center;">
+                            Flash is missing. Download it from<a
+                              target="_blank"
+                              href="http://get.adobe.com/flashplayer/"
+                              class="underline"
+                              >Adobe</a
+                            >.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        class="embed-responsive embed-responsive-16by9"
+                        id="flash_error_display"
+                        style="display: none;"
+                      >
+                        <div
+                          style="
+                            width: 100%;
+                            background: black;
+                            color: #fff;
+                            height: 350px;
+                          "
+                        >
+                          <div style="text-align: center; padding-top: 25%;">
+                            Flash is missing. Download it from<a
+                              target="_blank"
+                              href="http://get.adobe.com/flashplayer/"
+                              class="underline"
+                              >Adobe</a
+                            >.
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Trailer Video Configuration END -->
+                    </div>
+
+                    <div class="main-content">
+                      <div class="video-content">
+                        <div class="details">
+                          <div class="video-title">
+                            <div class="title row">
+                              <div
+                                class="col-lg-12 col-md-12 col-sm-12 col-lg-12 zero-padding"
+                              >
+                                <h3>{{video.title}}</h3>
+
+                                <div class="views pull-left">
+                                  {{video.view_count}} Views -
+                                  {{video.timestamp}} ago
+                                </div>
+
+                                <div class="pull-right relative">
+                                  <a
+                                    class="thumb-class"
+                                    data-toggle="modal"
+                                    data-target="#login_error"
+                                    ><i class="material-icons">thumb_up</i
+                                    >&nbsp;<span>5</span></a
+                                  >&nbsp;&nbsp;&nbsp;
+                                  <a
+                                    class="thumb-class"
+                                    data-toggle="modal"
+                                    data-target="#login_error"
+                                    ><i class="material-icons ali-midd-20"
+                                      >thumb_down</i
+                                    >&nbsp;<span>2</span></a
+                                  >
+
+                                  <a
+                                    class="share-new"
+                                    data-toggle="modal"
+                                    data-target="#popup1"
+                                  >
+                                    <i class="material-icons">share</i
+                                    >&nbsp;Share
+                                    <!--  <p class="hidden-xs">share</p> -->
+                                  </a>
+                                  <a
+                                    class="share-new global_playlist_id"
+                                    id="290"
+                                    href="#"
+                                  >
+                                    <i class="material-icons" value="Refresh"
+                                      >playlist_add</i
+                                    >&nbsp;Save&nbsp;&nbsp;
+                                  </a>
+
+                                  <!-- <form name="add_to_wishlist" method="post" id="add_to_wishlist" action="http://streamtube.streamhash.com/addWishlist" class="add-wishlist">
+                                                                                          
+                                                                                    </form> -->
+                                </div>
+                                <!--  <h3>Channel Name</h3> -->
+                                <div class="clearfix"></div>
+                                <!-- <h4 class="video-desc">&lt;p&gt;A Wind Turbine can be viewed in the video.&lt;/p&gt;
+                                </h4> -->
+                                <hr />
+                              </div>
+
+                              <div
+                                class="col-lg-12 col-md-12 col-sm-12 col-lg-12 top zero-padding"
+                              >
+                                <div class="row1">
+                                  <div
+                                    class="col-xs-12 col-md-7 col-sm-7 col-lg-7"
+                                  >
+                                    <div class="username">
+                                      <a
+                                        href="http://streamtube.streamhash.com/channel/502"
+                                      >
+                                        {{video.channel.user.username}}
+                                      </a>
+                                    </div>
+
+                                    <span class="stars">
+                                      <a
+                                        ><i
+                                          style="color: #ff0000;"
+                                          class="fa fa-star"
+                                          aria-hidden="true"
+                                        ></i
+                                      ></a>
+                                      <a
+                                        ><i
+                                          style="color: #ff0000;"
+                                          class="fa fa-star"
+                                          aria-hidden="true"
+                                        ></i
+                                      ></a>
+                                      <a
+                                        ><i
+                                          style="color: #ff0000;"
+                                          class="fa fa-star"
+                                          aria-hidden="true"
+                                        ></i
+                                      ></a>
+                                      <a
+                                        ><i
+                                          style="color: #ff0000;"
+                                          class="fa fa-star"
+                                          aria-hidden="true"
+                                        ></i
+                                      ></a>
+                                      <a
+                                        ><i
+                                          class="fa fa-star"
+                                          aria-hidden="true"
+                                        ></i
+                                      ></a>
+                                    </span>
+                                  </div>
+
+                                  <div
+                                    class="col-xs-12 col-md-5 col-sm-5 col-lg-5"
+                                  >
+                                    <div class="pull-right">
+                                      <button
+                                        type="button"
+                                        class="btn btn-danger report-button bottom-space"
+                                        title="Mark as Spam"
+                                        data-toggle="modal"
+                                        data-target="#report-form"
+                                      >
+                                        <i class="fa fa-flag"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="pull-right">
+                                      <a
+                                        id="subscription"
+                                        class="btn btn-sm bottom-space btn-info text-uppercase subscription"
+                                        onclick="channels_unsubscribe_subscribe(2130,502)"
+                                        ><span id="subscription_text">
+                                          Subscribe &nbsp; </span
+                                        ><span id="subscriberscnt">1</span></a
+                                      >
+
+                                      <!--                                                          
+                                      <a class="btn btn-sm bottom-space btn-info text-uppercase" onclick="subscribe(2130,502)">Subscribe &nbsp; 1</a>
+                                                                                    
+                                      -->
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                              </div>
+
+                              <div class="clearfix"></div>
+
+                              <div>
+                                <h4 class="video-desc">
+                                  <p>
+                                    {{video.discription}}
+                                  </p>
+                                </h4>
+
+                                <div class="tag-and-category">
+                                  <div class="row m-0">
+                                    <div
+                                      class="col-lg-3 col-md-3 col-sm-4 col-xs-4 p-0 mt-10"
+                                    >
+                                      <p
+                                        class="category-name"
+                                        style="
+                                          float: none !important;
+                                          font-size: 15px !important;
+                                        "
+                                      >
+                                        category
+                                      </p>
+                                    </div>
+                                    <div
+                                      class="col-lg-9 col-md-9 col-sm-8 col-xs-8 p-0 mt-10"
+                                    >
+                                      <a
+                                        href="category/hollywood-movies.html"
+                                        target="_blank"
+                                        class="category-name blue-link"
+                                        >{{video.category.title}}</a
+                                      >
+                                    </div>
+                                  </div>
+
+                                  <div class="row m-0">
+                                    <div
+                                      class="col-lg-3 col-md-3 col-sm-4 col-xs-4 p-0 mt-10"
+                                    >
+                                      <p
+                                        class="category-name"
+                                        style="
+                                          float: none !important;
+                                          font-size: 15px !important;
+                                        "
+                                      >
+                                        Tags
+                                      </p>
+                                    </div>
+                                    <div
+                                      class="col-lg-9 col-md-9 col-sm-8 col-xs-8 p-0 mt-10"
+                                    >
+                                      <a
+                                        href="tags/list0b30.html?id=2"
+                                        target="_blank"
+                                        class="category-name blue-link"
+                                        >Animation</a
+                                      >
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="clearfix"></div>
+
+                              <div
+                                class="more-content"
+                                style="display: none;"
+                                id="report_video_form"
+                              >
+                                <form
+                                  name="report_video"
+                                  method="post"
+                                  id="report_video"
+                                  action="http://streamtube.streamhash.com/markSpamVideo"
+                                >
+                                  <b>Report this Video ?</b>
+                                  <br />
+
+                                  <div class="report_list">
+                                    <label class="radio1">
+                                      <input
+                                        type="radio"
+                                        name="reason"
+                                        value="Sexual content"
+                                        required
+                                      />
+                                      <span class="outer"
+                                        ><span class="inner"></span></span
+                                      >Sexual content
+                                    </label>
+                                  </div>
+
+                                  <div class="report_list">
+                                    <label class="radio1">
+                                      <input
+                                        type="radio"
+                                        name="reason"
+                                        value="Violent or repulsive content."
+                                        required
+                                      />
+                                      <span class="outer"
+                                        ><span class="inner"></span></span
+                                      >Violent or repulsive content.
+                                    </label>
+                                  </div>
+
+                                  <div class="report_list">
+                                    <label class="radio1">
+                                      <input
+                                        type="radio"
+                                        name="reason"
+                                        value="Hateful or abusive content."
+                                        required
+                                      />
+                                      <span class="outer"
+                                        ><span class="inner"></span></span
+                                      >Hateful or abusive content.
+                                    </label>
+                                  </div>
+
+                                  <div class="report_list">
+                                    <label class="radio1">
+                                      <input
+                                        type="radio"
+                                        name="reason"
+                                        value="Harmful dangerous acts."
+                                        required
+                                      />
+                                      <span class="outer"
+                                        ><span class="inner"></span></span
+                                      >Harmful dangerous acts.
+                                    </label>
+                                  </div>
+
+                                  <div class="report_list">
+                                    <label class="radio1">
+                                      <input
+                                        type="radio"
+                                        name="reason"
+                                        value="Child abuse."
+                                        required
+                                      />
+                                      <span class="outer"
+                                        ><span class="inner"></span></span
+                                      >Child abuse.
+                                    </label>
+                                  </div>
+
+                                  <div class="report_list">
+                                    <label class="radio1">
+                                      <input
+                                        type="radio"
+                                        name="reason"
+                                        value="Spam or misleading."
+                                        required
+                                      />
+                                      <span class="outer"
+                                        ><span class="inner"></span></span
+                                      >Spam or misleading.
+                                    </label>
+                                  </div>
+
+                                  <div class="report_list">
+                                    <label class="radio1">
+                                      <input
+                                        type="radio"
+                                        name="reason"
+                                        value="Infringes my rights."
+                                        required
+                                      />
+                                      <span class="outer"
+                                        ><span class="inner"></span></span
+                                      >Infringes my rights.
+                                    </label>
+                                  </div>
+
+                                  <div class="report_list">
+                                    <label class="radio1">
+                                      <input
+                                        type="radio"
+                                        name="reason"
+                                        value="Captions issue."
+                                        required
+                                      />
+                                      <span class="outer"
+                                        ><span class="inner"></span></span
+                                      >Captions issue.
+                                    </label>
+                                  </div>
+
+                                  <input
+                                    type="hidden"
+                                    name="video_tape_id"
+                                    value="290"
+                                  />
+                                  <p class="help-block">
+                                    <small
+                                      >If you report this video, you won&#039;t
+                                      see again the same video in anywhere in
+                                      your account except &quot;Spam
+                                      Videos&quot;. If you want to continue to
+                                      report this video as same. Click continue
+                                      and proceed the same.</small
+                                    >
+                                  </p>
+                                  <div class="pull-right">
+                                    <button class="btn btn-info btn-sm">
+                                      Submit
+                                    </button>
+                                  </div>
+                                  <div class="clearfix"></div>
+                                </form>
+                              </div>
+                            </div>
+
+                            <div class="hr-class"><hr /></div>
+
+                            <div class="clearfix"></div>
+                          </div>
+
+                          <!--end of video-title-->
+                        </div>
+
+                        <!--end of details-->
+
+                        <div class="v-comments">
+                          <div class="pull-left">
+                            <h3 class="mb-15">
+                              <span class="c-380" id="comment_count"
+                                >{{video.comment_count}}</span
+                              >&nbsp;Comments
+                            </h3>
+                          </div>
+                          <div class="clearfix"></div>
+
+                          <!-- <p class="small mb-15">Note : Rating can give only one time to each User</p> -->
+                          <div class="com-content">
+                            <div class="image-form">
+                              <div class="comment-box1">
+                                <div class="com-image">
+                                  {% if request.user.is_staff %}
+                                  <img
+                                    style="
+                                      width: 50px;
+                                      height: 50px;
+                                      border-radius: 25px;
+                                      object-fit: cover;
+                                      object-position: center;
+                                    "
+                                    src="{{ request.user.channel.profile_picture.url }}"
+                                  />
+                                  {% else %}
+                                  <img
+                                    style="
+                                      width: 50px;
+                                      height: 50px;
+                                      border-radius: 25px;
+                                      object-fit: cover;
+                                      object-position: center;
+                                    "
+                                    src="http://streamtube.streamhash.com/placeholder.png"
+                                  />
+                                  {% endif %}
+                                </div>
+                                <!--end od com-image-->
+                                <div id="comment_form">
+                                  <div>
+                                    <form
+                                      method="POST"
+                                      id="comment_sent"
+                                      name="comment_sent"
+                                      action="."
+                                    >
+                                      <!-- <input
+                                        type="hidden"
+                                        value="293"
+                                        name="video_tape_id"
+                                      /> -->
+                                      <!-- 
+                                      <div
+                                        class="star-rating star-rating-active rating-md"
+                                      >
+                                        <s
+                                          ><s
+                                            ><s
+                                              ><s><s></s></s></s></s
+                                        ></s>
+                                      </div>
+                                      <input
+                                        id="rating_system"
+                                        name="ratings"
+                                        type="number"
+                                        class="rating commentcomment_rating"
+                                        value=""
+                                        min="1"
+                                        max="5"
+                                        step="1"
+                                        style="display: none;"
+                                      /> -->
+                                      {% csrf_token %} {{form}}
+
+                                      <p class="underline"></p>
+                                      <button
+                                        class="btn pull-right btn-sm btn-info btn-lg top-btn-space"
+                                        type="submit"
+                                        id="comment_btn"
+                                      >
+                                        Comment
+                                      </button>
+                                      <div class="clearfix"></div>
+                                    </form>
+                                  </div>
+                                </div>
+                                <!--end of comment-form-->
+                              </div>
+                            </div>
+                            {% for comment in video.get_comments %}
+                            <div class="feed-comment">
+                              <span id="new-comment"></span>
+                              <div class="display-com">
+                                <div class="com-image">
+                                  {% if comment.user.channel %}
+                                  <img
+                                    style="
+                                      width: 50px;
+                                      height: 50px;
+                                      border-radius: 25px;
+                                      object-fit: cover;
+                                      object-position: center;
+                                    "
+                                    src="{{ comment.user.channel.profile_picture.url }}"
+                                  />
+                                  {% else %}
+                                  <img
+                                    style="
+                                      width: 50px;
+                                      height: 50px;
+                                      border-radius: 25px;
+                                      object-fit: cover;
+                                      object-position: center;
+                                    "
+                                    src="http://streamtube.streamhash.com/uploads/images/cf11a2e5d43db8f1e4419160f14b093ae3c6e938.jpg"
+                                  />
+                                  {% endif %}
+                                </div>
+                                <!--end od com-image-->
+                                <div class="display-comhead">
+                                  <span class="sub-comhead">
+                                    <a>
+                                      <h5 style="float: left;">
+                                        {{comment.user.username}}
+                                      </h5>
+                                    </a>
+                                    <a class="text-none">
+                                      <p>{{comment.timestamp}}</p>
+                                    </a>
+
+                                    <p class="com-para">
+                                      {{comment.text}}
+                                    </p>
+                                  </span>
+                                </div>
+                                <!--display-comhead-->
+                              </div>
+                              <!--display-com-->
+                            </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--end of main-content-->
+                  </div>
+
+                  <!--end of col-sm-8 and play-video-->
+
+                  <div class="col-sm-12 col-md-4 side-video custom-side">
+                    <div class="up-next pt-0">
+                      <h4 class="sugg-head1">Suggestions</h4>
+
+                      <ul class="video-sugg">
+                        {% for vid in most_recent %}
+                        <li class="sugg-list row">
+                          <div class="main-video">
+                            <div class="video-image">
+                              <div class="video-image-outer">
+                                <a href="{{vid.get_absolute_url}}">
+                                  <img
+                                    src="{% static 'streamtube/images/placeholder.gif' %}"
+                                    data-src="{{vid.thumbnail.url}}"
+                                    class="placeholder"
+                                  />
+                                </a>
+                              </div>
+
+                              <div class="video_duration">
+                                00:00:15
+                              </div>
+                            </div>
+
+                            <!--video-image-->
+
+                            <div class="sugg-head">
+                              <div class="suggn-title">
+                                <h5>
+                                  <a href="{{vid.get_absolute_url}}"
+                                    >{{vid.title}}</a
+                                  >
+                                </h5>
+                              </div>
+                              <!--end of sugg-title-->
+
+                              <span class="video_views">
+                                <div>
+                                  <a href="{{vid.get_absolute_url}}"
+                                    >{{vid.channel.user.username}}</a
+                                  >
+                                </div>
+                                <i class="fa fa-eye"></i> {{vid.view_count}}
+                                Views <b>.</b>
+                                {{vid.timestamp|timesince}} ago
+                              </span>
+
+                              <br />
+
+                              <span class="stars">
+                                <a
+                                  ><i
+                                    style="color: #ff0000;"
+                                    class="fa fa-star"
+                                    aria-hidden="true"
+                                  ></i
+                                ></a>
+                                <a
+                                  ><i
+                                    style="color: #ff0000;"
+                                    class="fa fa-star"
+                                    aria-hidden="true"
+                                  ></i
+                                ></a>
+                                <a
+                                  ><i
+                                    style="color: #ff0000;"
+                                    class="fa fa-star"
+                                    aria-hidden="true"
+                                  ></i
+                                ></a>
+                                <a
+                                  ><i
+                                    style="color: #ff0000;"
+                                    class="fa fa-star"
+                                    aria-hidden="true"
+                                  ></i
+                                ></a>
+                                <a
+                                  ><i
+                                    style="color: #ff0000;"
+                                    class="fa fa-star"
+                                    aria-hidden="true"
+                                  ></i
+                                ></a>
+                              </span>
+                            </div>
+                            <!--end of sugg-head-->
+                          </div>
+                          <!--end of main-video-->
+                        </li>
+                        <!--end of sugg-list-->
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    <!--end of up-next-->
+                  </div>
+
+                  <div id="dislike_video" style="display: none;">
+                    You disliked this video
+                  </div>
+
+                  <div id="like_video" style="display: none;">
+                    You liked this video
+                  </div>
+
+                  <div id="add_wishlist" style="display: none;">
+                    Add To Wishlist
+                  </div>
+
+                  <div id="remove_wishlist" style="display: none;">
+                    Remove From Wishlist
+                  </div>
+                  <!--end of col-sm-4-->
+                </div>
+              </div>
+
+              <div class="sidebar-back"></div>
+            </div>
+          </div>
+          <!--y-content-row-->
+        </div>
+
+        <!-- MODALS SECTION -->
+
+        <div class="modal fade" id="report-form" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+                <h4 class="modal-title">Report this Video ?</h4>
+              </div>
+
+              <div class="modal-body">
+                <div class="more-content" id="report_video_form">
+                  <form
+                    name="report_video"
+                    method="post"
+                    id="report_video"
+                    action="http://streamtube.streamhash.com/markSpamVideo"
+                  >
+                    <div class="report_list">
+                      <label class="radio1">
+                        <input
+                          id="radio1"
+                          type="radio"
+                          name="reason"
+                          value="Sexual content"
+                          required
+                        />
+
+                        <span class="outer"><span class="inner"></span></span
+                        >Sexual content
+                      </label>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="report_list">
+                      <label class="radio1">
+                        <input
+                          id="radio1"
+                          type="radio"
+                          name="reason"
+                          value="Violent or repulsive content."
+                          required
+                        />
+
+                        <span class="outer"><span class="inner"></span></span
+                        >Violent or repulsive content.
+                      </label>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="report_list">
+                      <label class="radio1">
+                        <input
+                          id="radio1"
+                          type="radio"
+                          name="reason"
+                          value="Hateful or abusive content."
+                          required
+                        />
+
+                        <span class="outer"><span class="inner"></span></span
+                        >Hateful or abusive content.
+                      </label>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="report_list">
+                      <label class="radio1">
+                        <input
+                          id="radio1"
+                          type="radio"
+                          name="reason"
+                          value="Harmful dangerous acts."
+                          required
+                        />
+
+                        <span class="outer"><span class="inner"></span></span
+                        >Harmful dangerous acts.
+                      </label>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="report_list">
+                      <label class="radio1">
+                        <input
+                          id="radio1"
+                          type="radio"
+                          name="reason"
+                          value="Child abuse."
+                          required
+                        />
+
+                        <span class="outer"><span class="inner"></span></span
+                        >Child abuse.
+                      </label>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="report_list">
+                      <label class="radio1">
+                        <input
+                          id="radio1"
+                          type="radio"
+                          name="reason"
+                          value="Spam or misleading."
+                          required
+                        />
+
+                        <span class="outer"><span class="inner"></span></span
+                        >Spam or misleading.
+                      </label>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="report_list">
+                      <label class="radio1">
+                        <input
+                          id="radio1"
+                          type="radio"
+                          name="reason"
+                          value="Infringes my rights."
+                          required
+                        />
+
+                        <span class="outer"><span class="inner"></span></span
+                        >Infringes my rights.
+                      </label>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="report_list">
+                      <label class="radio1">
+                        <input
+                          id="radio1"
+                          type="radio"
+                          name="reason"
+                          value="Captions issue."
+                          required
+                        />
+
+                        <span class="outer"><span class="inner"></span></span
+                        >Captions issue.
+                      </label>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <input type="hidden" name="video_tape_id" value="290" />
+
+                    <p class="help-block">
+                      <small
+                        >If you report this video, you won&#039;t see again the
+                        same video in anywhere in your account except &quot;Spam
+                        Videos&quot;. If you want to continue to report this
+                        video as same. Click continue and proceed the
+                        same.</small
+                      >
+                    </p>
+
+                    <div class="pull-right">
+                      <button class="btn btn-info btn-sm">Submit</button>
+                    </div>
+
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- modal content ends -->
+          </div>
+        </div>
+
+        <!-- Login Modal -->
+
+        <div class="modal fade" id="login_error" role="dialog">
+          <div class="modal-dialog modal-sm">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+                <h4 class="modal-title">Authentication Error</h4>
+              </div>
+
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-lg-12">
+                    Please login and continue to watch video
+                    <div class="clearfix"></div>
+                    <br />
+                    <div class="text-center">
+                      <a href="login.html"
+                        ><button class="btn btn-sm btn-danger">Login</button></a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- modal content ends -->
+          </div>
+        </div>
+
+        <!-- Share Modal start -->
+
+        <div class="modal modal-top1" role="dialog" id="popup1">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div>
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                  </button>
+                  <h4 class="modal-title share-title">Share</h4>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <a
+                      class="share-fb btn btn-primary btn-sm"
+                      target="_blank"
+                      href="http://www.facebook.com/sharer.php?u=http://streamtube.streamhash.com/video/290"
+                    >
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                    <a
+                      class="share-twitter btn btn-info btn-sm"
+                      style="margin-left: 8px;"
+                      target="_blank"
+                      href="http://twitter.com/share?text=Wind%20Turbine...&amp;url=http://streamtube.streamhash.com/video/290"
+                    >
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <input
+                      name="embed_link"
+                      class="form-control"
+                      id="embed_link"
+                      type="hidden"
+                      value="&lt;iframe width=&#039;560&#039; height=&#039;315&#039; src=%27http_/streamtube.streamhash.com/embed090a.html?u_id=Wind-Turbine-290' frameborder=&#039;0&#039; allowfullscreen&gt;&lt;/iframe&gt;"
+                    />
+                    <a
+                      class="btn btn-sm btn-success"
+                      data-toggle="modal"
+                      data-target="#copy-embed"
+                      style="margin-left: 8px; margin-top: -1px;"
+                      title="Copy Embedded Link"
+                      id="copy-embed1"
+                    >
+                      <i class="fa fa-link"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Share Modal end -->
+
+        <!-- EMBED LINK start -->
+
+        <div class="modal fade modal-top" id="copy-embed" role="dialog">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content content-modal">
+              <div class="row">
+                <div
+                  class="col-xs-12 col-sm-6 col-md-7 col-lg-7 modal-bg-img zero-padding hidden-xs"
+                  style="
+                    background-image: url(uploads/images/240_1550236834_001.png);
+                  "
+                >
+                  <h4 class="video-title1">Wind Turbine</h4>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5 right-space">
+                  <div class="copy-embed">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                      </button>
+                      <h4 class="modal-title hidden-xs">Embed Video</h4>
+                      <h4 class="modal-title visible-xs">Wind Turbine</h4>
+                    </div>
+
+                    <div class="modal-body">
+                      <form onsubmit="return false;">
+                        <div class="form-group">
+                          <textarea
+                            class="form-control"
+                            rows="5"
+                            id="embed_link_url"
+                            readonly
+                          >
+&lt;iframe width=&#039;560&#039; height=&#039;315&#039; src=&#039;http://streamtube.streamhash.com/embed?u_id=Wind-Turbine-290&#039; frameborder=&#039;0&#039; allowfullscreen&gt;&lt;/iframe&gt;</textarea
+                          >
+                          <p class="underline1"></p>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button
+                        class="btn btn-danger pull-right"
+                        onclick="copyTextToClipboard();"
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Embed link End -->
+
+        <!-- PLAYLIST POPUPSTART -->
+
+        <div
+          class="modal fade global_playlist_id_modal"
+          id="global_playlist_id_290"
+          role="dialog"
+        >
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <!-- if user logged in let create, update playlist -->
+
+              <div class="menu4 top nav-space">
+                <p>Sign in to add this video to a playlist</p>
+
+                <a href="login.html" class="btn btn-sm btn-primary">Login</a>
+              </div>
+            </div>
+            <!-- modal content ends -->
+          </div>
+        </div>
+
+        <!-- PLAYLIST POPUPEND -->
+
+        <!-- MODALS SECTION -->
+      </div>
+
+      <div class="bottom-height"></div>
+    </div>
+
+    {% include "scripts.html" %}
+
+    <script
+      type="text/javascript"
+      src="{% static 'assets/js/star-rating.js' %}"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="{% static 'assets/js/toast.script.js' %}"
+    ></script>
+
+    <script src="{% static 'jwplayer/jwplayer.js' %}"></script>
+
+    <script type="text/javascript">
+      // <!-- wishlist animation -->
+
+      $(document).ready(function () {
+        $(".heart").on("click touchstart", function () {
+          $(this).toggleClass("is_animating");
+        });
+
+        $(".heart").on("animationend", function () {
+          $(this).toggleClass("is_animating");
+        });
+      });
+
+      // <!-- wishlist animation -->
+
+      jwplayer.key = "M2NCefPoiiKsaVB8nTttvMBxfb1J3Xl7PDXSaw==";
+
+      $(document).ready(function () {
+        $(".video-y-menu").addClass("hidden");
+      });
+
+      function showReportForm() {
+        var divId = document.getElementById("report_video_form").style.display;
+
+        if (divId == "none") {
+          $("#report_video_form").show(500);
+        } else {
+          $("#report_video_form").hide(500);
+        }
+      }
+
+      $(".view_rating").rating({ disabled: true, showClear: false });
+
+      $(".comment_rating").rating({ showClear: false });
+
+      $(document).on("ready", function () {
+        $("#copy-embed1").on("click", function () {
+          $("#popup1").modal("hide");
+        });
+
+        $(".global_playlist_id").on("click", function (event) {
+          event.preventDefault();
+
+          var video_tape_id = $(this).attr("id");
+
+          $("#global_playlist_id_" + video_tape_id).modal("show");
+        });
+      });
+
+      jQuery(document).ready(function () {
+        // Opera 8.0+
+        var isOpera =
+          (!!window.opr && !!opr.addons) ||
+          !!window.opera ||
+          navigator.userAgent.indexOf("OPR/index.html") >= 0;
+        // Firefox 1.0+
+        var isFirefox = typeof InstallTrigger !== "undefined";
+        // At least Safari 3+: "[object HTMLElementConstructor]"
+        var isSafari =
+          Object.prototype.toString
+            .call(window.HTMLElement)
+            .indexOf("Constructor") > 0;
+        // Internet Explorer 6-11
+        var isIE = /*@cc_on!@*/ false || !!document.documentMode;
+        // Edge 20+
+        var isEdge = !isIE && !!window.StyleMedia;
+        // Chrome 1+
+        var isChrome = !!window.chrome && !!window.chrome.webstore;
+        // Blink engine detection
+        var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+        //hang on event of form with id=myform
+        jQuery("form[name='add_to_wishlist']").submit(function (e) {
+          //prevent Default functionality
+          e.preventDefault();
+
+          //get the action-url of the form
+          var actionurl = e.currentTarget.action;
+
+          //do your own request an handle the results
+          jQuery.ajax({
+            url: actionurl,
+            type: "post",
+            dataType: "json",
+            data: jQuery("#add_to_wishlist").serialize(),
+            success: function (data) {
+              if (data.success == true) {
+                jQuery("#added_wishlist").html("");
+
+                /*var display_style = document.getElementById('check_id').style.display;
+   
+                       alert(display_style);*/
+
+                if (data.status == 1) {
+                  jQuery("#status").val("0");
+
+                  jQuery("#wishlist_id").val(data.wishlist_id);
+                  jQuery("#added_wishlist").css({
+                    "font-family": "arial",
+                    "background-color": "transparent",
+                    color: "#b31217",
+                  });
+
+                  if (jQuery(window).width() > 640) {
+                    var append = '<i class="fa fa-heart">';
+                    // var append = '<i class="fa fa-times-circle">&nbsp;&nbsp;Wishlist';
+                  } else {
+                    var append = '<i class="fa fa-heart">';
+                  }
+                  jQuery("#added_wishlist").append(append);
+                } else {
+                  jQuery("#status").val("1");
+                  jQuery("#wishlist_id").val("");
+                  jQuery("#added_wishlist").css({
+                    "font-family": "arial",
+                    background: "",
+                    color: "",
+                  });
+                  if (jQuery(window).width() > 640) {
+                    var append = '<i class="fa fa-heart">';
+                    // var append = '<i class="fa fa-plus-circle">&nbsp;&nbsp;Wishlist';
+                  } else {
+                    var append = '<i class="fa fa-heart">';
+                  }
+
+                  jQuery("#added_wishlist").append(append);
+                }
+              } else {
+                // console.log('Wrong...!');
+              }
+            },
+          });
+        });
+
+        var playerInstance = jwplayer("main-video-player");
+
+        var path = [];
+
+        if (jQuery.browser.mobile) {
+          $("#mainVideo").show();
+
+          // console.log('You are using a mobile device!');
+
+          path.push({
+            file: "{{video.path.url}}",
+            label: "Original",
+          });
+        } else {
+          path.push({
+            file: "{{video.path.url}}",
+            label: "original",
+          });
+        }
+
+        var pre_ad_status = 1;
+
+        var post_ad_status = 1;
+
+        var between_ad_status = 0;
+
+        var OnPlayStatus = 0;
+
+        playerInstance.setup({
+          sources: path,
+          image:
+            "http://streamtube.streamhash.com/uploads/images/240_1550236834_001.png",
+          width: "100%",
+          aspectratio: "16:9",
+          primary: "flash",
+          controls: true,
+          "controlbar.idlehide": false,
+          controlBarMode: "floating",
+          controls: {
+            enableFullscreen: true,
+            enablePlay: true,
+            enablePause: true,
+            enableMute: true,
+            enableVolume: true,
+          },
+          autoplay: true,
+          autostart: true,
+          sharing: {
+            sites: ["facebook", "twitter"],
+          },
+          events: {
+            onReady: function (event) {
+              console.log("onready");
+            },
+
+            onTime: function (event) {
+              // Between Ad Play
+
+              var video_time = Math.round(playerInstance.getPosition());
+            },
+
+            onBeforePlay: function (event) {},
+            onPlay: function (event) {
+              // between_ad_status = 0;
+            },
+
+            onComplete: function (event) {
+              console.log("onComplete Fn");
+
+              between_ad_status = 0;
+
+              // For post ad, once video completed the ad will execute
+
+              if (post_ad_status) {
+                $("#ad_image").attr(
+                  "src",
+                  "{% static 'uploads/ad/tabligh.png' %}"
+                );
+
+                $("#main-video-player").css({
+                  visibility: "hidden",
+                  width: "0%",
+                });
+
+                $("#main_video_ad").show();
+
+                $(".click_here_ad").html(
+                  "<a target='_blank' href='https://holiday-sale/'>Click Here</a>"
+                );
+
+                $(".click_here_ad").show();
+
+                stop();
+
+                post_ad_status = 0;
+
+                adsPage("6");
+              }
+            },
+          },
+
+          tracks: [
+            {
+              file: "",
+              kind: "captions",
+              default: true,
+            },
+          ],
+        });
+
+        // For Pre Ad , Every first frame the ad will execute
+
+        playerInstance.on("firstFrame", function () {
+          console.log("firstFrame");
+
+          post_ad_status = 1;
+
+          // OnPlayStatus += 1;
+
+          // if (pre_ad_status) {
+
+          $("#ad_image").attr("src", "{% static 'uploads/ad/tabligh.png' %}");
+
+          $("#main-video-player").css({ visibility: "hidden", width: "0%" });
+
+          $("#main_video_ad").show();
+
+          $(".click_here_ad").html(
+            "<a target='_blank' href='https://holiday-sale/'>Click Here</a>"
+          );
+
+          $(".click_here_ad").show();
+
+          jwplayer().pause();
+
+          pre_ad_status = 0;
+
+          adsPage("6");
+
+          // }
+        });
+
+        playerInstance.on("setupError", function () {
+          jQuery("#main-video-player").css("display", "none");
+          jQuery("#trailer_video_setup_error").hide();
+
+          var hasFlash = false;
+          try {
+            var fo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+            if (fo) {
+              hasFlash = true;
+            }
+          } catch (e) {
+            if (
+              navigator.mimeTypes &&
+              navigator.mimeTypes["application/x-shockwave-flash"] !=
+                undefined &&
+              navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin
+            ) {
+              hasFlash = true;
+            }
+          }
+
+          if (hasFlash == false) {
+            jQuery("#flash_error_display").show();
+            return false;
+          }
+
+          jQuery("#main_video_setup_error").css("display", "block");
+
+          confirm(
+            "The video format is not supported in this browser. Please option some other browser."
+          );
+        });
+
+        jQuery("#main-video-player").show();
+
+        // console.log(jwplayer().getPosition());
+
+        var intervalId;
+
+        var timings = "0";
+
+        var time = 0;
+
+        function timer() {
+          intervalId = setInterval(function () {
+            //
+          }, 1000);
+        }
+
+        function stop() {
+          clearInterval(intervalId);
+        }
+
+        var adCount = 0;
+
+        function adsPage(adtimings) {
+          // alert("timings..!");
+
+          $(".seconds").html(adtimings + " sec");
+
+          $("#progress").html(
+            '<div class="progress-bar-div">' +
+              '<span class="progress-bar-fill-div" style="width: 0%"></span>' +
+              "</div>"
+          );
+
+          $(".progress-bar-fill-div").css(
+            "transition",
+            "width " + adtimings + "s ease-in-out"
+          );
+
+          $(".progress-bar-fill-div")
+            .delay(1000)
+            .queue(function () {
+              // console.log("playig");
+
+              $(this).css("width", "100%");
+            });
+
+          intervalId = setInterval(function () {
+            adCount += 1;
+
+            $(".seconds").html(adtimings - adCount + " sec");
+
+            // console.log("Ad Count " +adCount);
+
+            // console.log("Ad Timings "+adtimings);
+
+            if (adCount == adtimings) {
+              $(this).css("width", "100%");
+
+              adCount = 0;
+
+              stop();
+
+              $(".click_here_ad").hide();
+
+              $("#ad_image").attr("src", "");
+
+              $("#main_video_ad").hide();
+
+              $("#main-video-player").css({
+                visibility: "visible",
+                width: "100%",
+              });
+
+              if (playerInstance.getState() != "complete") {
+                jwplayer().play();
+
+                // timer();
+              }
+            }
+          }, 1000);
+        }
+      });
+
+      function copyTextToClipboard() {
+        $("#embed_link_url").select();
+
+        try {
+          var successful = document.execCommand("copy");
+
+          var msg = successful ? "successful" : "unsuccessful";
+
+          // console.log('Copying text command was ' + msg);
+
+          addToast();
+          // alert('Copied Embedded Link');
+        } catch (err) {
+          // console.log('Oops, unable to copy');
+        }
+      }
+
+      /**
+       * @function  playlist_video_update()
+       *
+       * @uses  To add/remove video from playlist
+       *
+       * @created  Anjana H
+       *
+       * @updated  Anjana H
+       *
+       */
+      function playlist_video_update(
+        video_tape_id,
+        playlist_id,
+        playlist_checkbox
+      ) {
+        // id of clicked playlist
+        var playlist_checkbox_id = playlist_checkbox.id;
+
+        var status;
+
+        var playlist_ids = $("input[name='playlist_ids[]']")
+          .map(function () {
+            return $(this).val();
+          })
+          .get();
+
+        if ($("#" + playlist_checkbox_id).prop("checked") == true) {
+          var status = 1;
+
+          // Do not change else causes string error in array explode
+          if (playlist_ids != "") {
+            playlist_ids.push(playlist_id.toString());
+
+            playlist_id = playlist_ids.toString();
+          }
+        } else if ($("#" + playlist_checkbox_id).prop("checked") == false) {
+          var status = 0;
+        }
+
+        $.ajax({
+          url: "http://streamtube.streamhash.com/playlist_video_update",
+          data: {
+            video_tape_id: video_tape_id,
+            playlist_id: playlist_id,
+            status: status,
+            playlist_ids: playlist_ids,
+          },
+          type: "POST",
+          success: function (data) {
+            if (data.success) {
+              alert(data.message);
+            } else {
+              console.log(data.error_messages);
+            }
+          },
+
+          error: function (data) {},
+        });
+      }
+
+      /**
+       * @function  playlist_save_video_add()
+       *
+       * @uses  update/create playlist
+       *
+       * @created  Anjana H
+       *
+       * @updated  Anjana H
+       *
+       */
+      function playlist_save_video_add(video_tape_id) {
+        var title = $("#playlist_title").val();
+
+        var privacy = $("#playlist_privacy").val();
+
+        if (title == "") {
+          alert("Title for playlist required");
+        } else {
+          $.ajax({
+            url: "http://streamtube.streamhash.com/playlist/save/video_add",
+            data: {
+              title: title,
+              video_tape_id: video_tape_id,
+              privacy: privacy,
+            },
+            type: "post",
+            success: function (data) {
+              if (data.success) {
+                $("#playlist_title").removeAttr("value");
+
+                $("#create_playlist_form").hide();
+
+                $("#no_playlist_text").hide();
+
+                var labal =
+                  '<label class="playlist-container">' +
+                  data.title +
+                  '<input type="checkbox" onclick="playlist_video_update(' +
+                  video_tape_id +
+                  ", " +
+                  data.playlist_id +
+                  ',this)" id="playlist_' +
+                  data.playlist_id +
+                  '" checked> <input type="hidden" name="playlist_ids[]" value="playlist_' +
+                  data.playlist_id +
+                  '"><span class="playlist-checkmark"></span></label>';
+
+                $("#user_playlists").append(labal);
+
+                window.location.reload();
+              } else {
+                alert(data.error_messages);
+              }
+            },
+
+            error: function (data) {},
+          });
+        }
+      }
+
+      /**
+       * @function  channels_unsubscribe_subscribe()
+       *
+       * @uses  used to update the subscribe status
+       *
+       * @created  Bhawya
+       *
+       * @updated  Bhawya
+       *
+       */
+
+      function channels_unsubscribe_subscribe(user_id, channel_id) {
+        $.ajax({
+          url:
+            "http://streamtube.streamhash.com/channels_unsubscribe_subscribe",
+          data: { id: user_id, channel_id: channel_id },
+          type: "get",
+
+          success: function (data) {
+            if (data.is_user_subscribed_the_channel) {
+              $(".subscription").addClass("subscription_button");
+              $("#subscription_text").html("Un Subscribe&nbsp;");
+              $("#subscriberscnt").html(data.subscription_count);
+            } else {
+              $(".subscription").removeClass("subscription_button");
+              $("#subscription_text").html("Subscribe&nbsp;");
+              $("#subscriberscnt").html(data.subscription_count);
+            }
+          },
+
+          error: function (data) {},
+        });
+      }
+
+      /**
+       * @function  wishlist_operations()
+       *
+       * @uses  Add / Remove  Wishlist
+       *
+       * @created  Bhawya
+       *
+       * @updated  Bhawya
+       *
+       */
+      function wishlist_operations(user_id, video_tape_id) {
+        $.ajax({
+          url: "http://streamtube.streamhash.com/wishlist_operations",
+          data: { id: user_id, video_tape_id: video_tape_id },
+          type: "get",
+
+          success: function (data) {
+            if (data.data && data.data.wishlist_status) {
+              $(".icon_color").addClass("wishlist-add");
+
+              var x = document.getElementById("add_wishlist");
+
+              x.className = "show";
+
+              setTimeout(function () {
+                x.className = x.className.replace("show", "");
+              }, 3000);
+            } else {
+              $(".icon_color").removeClass("wishlist-add");
+
+              var x = document.getElementById("remove_wishlist");
+
+              x.className = "show";
+
+              setTimeout(function () {
+                x.className = x.className.replace("show", "");
+              }, 3000);
+            }
+          },
+
+          error: function (data) {},
+        });
+      }
+
+      /**
+       * @function  dislikeVideo()
+       *
+       * @uses  Videos disLike and count based on the disLikes
+       *
+       * @created  Bhawya
+       *
+       * @updated  Bhawya
+       *
+       */
+      function likeVideo(video_id) {
+        $(".dislike").removeClass("dislike_color");
+        $.ajax({
+          url: "http://streamtube.streamhash.com/like_video",
+          data: { video_tape_id: video_id },
+          type: "post",
+          success: function (data) {
+            if (data.success && data.like_status) {
+              $(".like").removeClass("like_color");
+
+              var x = document.getElementById("like_video");
+
+              x.className = "hide";
+
+              setTimeout(function () {
+                x.className = x.className.replace("hide", "");
+              }, 3000);
+            } else {
+              $(".like").addClass("like_color");
+
+              var x = document.getElementById("like_video");
+
+              x.className = "show";
+
+              setTimeout(function () {
+                x.className = x.className.replace("show", "");
+              }, 3000);
+            }
+
+            if (data.success) {
+              $("#like_count").html(data.like_count);
+
+              $("#dislike_count").html(data.dislike_count);
+            } else {
+              // console.log(data.error_messages);
+            }
+          },
+
+          error: function (data) {},
+        });
+      }
+
+      /**
+       * @function  likeVideo()
+       *
+       * @uses  Videos Like and count based on the Likes
+       *
+       * @created  Bhawya
+       *
+       * @updated  Bhawya
+       *
+       */
+      function dislikeVideo(video_id) {
+        $(".like").removeClass("like_color");
+
+        $.ajax({
+          url: "http://streamtube.streamhash.com/dis_like_video",
+          type: "post",
+          data: { video_tape_id: video_id },
+          success: function (data) {
+            if (data.success && data.dislike_status) {
+              $(".dislike").removeClass("dislike_color");
+
+              var x = document.getElementById("dislike_video");
+
+              x.className = "hide";
+
+              setTimeout(function () {
+                x.className = x.className.replace("hide", "");
+              }, 3000);
+            } else {
+              $(".dislike").addClass("dislike_color");
+
+              var x = document.getElementById("dislike_video");
+
+              x.className = "show";
+
+              setTimeout(function () {
+                x.className = x.className.replace("show", "");
+              }, 3000);
+            }
+
+            if (data.success) {
+              $("#like_count").html(data.like_count);
+
+              $("#dislike_count").html(data.dislike_count);
+            } else {
+              // console.log(data.error_messages);
+            }
+          },
+
+          error: function (data) {},
+        });
+      }
+
+      function addToast() {
+        $.Toast("Embedded Link", "Link Copied Successfully.", "success", {
+          has_icon: false,
+          has_close_btn: true,
+          stack: false,
+          fullscreen: true,
+          timeout: 1000,
+          sticky: false,
+          has_progress: true,
+          rtl: false,
+        });
+      }
+    </script>
+
+    <script type="text/javascript">
+      $("#").addClass("active");
+    </script>
+  </body>
+
+  <!-- Mirrored from streamtube.streamhash.com/video/290 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Apr 2020 19:24:00 GMT -->
+</html>

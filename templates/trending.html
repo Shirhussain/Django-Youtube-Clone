@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    {% include "headlink.html" %}
+    <script></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper_content">
+
+        {% include "navbar.html" %}
+
+        <div class="common-streamtube">
+
+
+            <div class="y-content">
+
+                <div class="row content-row">
+
+                    <!-- left common menu which is called ymenu -->
+                    {% include "menu.html" %}
+
+                    <div class="page-inner col-sm-9 col-md-10">
+
+                        <div class="slide-area1 recom-area">
+                            <div class="box-head recom-head">
+                                <h3>Trending</h3>
+                            </div>
+
+                            <div class="recommend-list row">
+                                {% for vid in video %}
+                                <div class="slide-box recom-box">
+                                    <div class="slide-image">
+                                        <a href="{{ vid.get_absolute_url }}">
+                                            <img src="{% static 'streamtube/images/placeholder.gif' %}" data-src="{{ vid.thumbnail.url }}" class="slide-img1 placeholder" />
+                                        </a>
+                                        <div class="video_duration">
+                                            00:00:32
+                                        </div>
+                                    </div><!--end of slide-image-->
+
+                                    <div class="video-details recom-details">
+                                        <div class="video-head">
+                                            <a href="{{ vid.get_absolute_url }}">{{ vid.title }}</a>
+                                        </div>
+
+
+                                        <span class="video_views">
+                                            <div><a href="{{ vid.get_absolute_url }}">{{ vid.channel.user.username }}</a></div>
+                                            <i class="fa fa-eye"></i> {{vid.view_count}} Views <b>.</b> 
+                                            {{vid.timestamp|timesince}}
+                                        </span> 
+                                    </div><!--end of video-details-->
+                                </div><!--end of slide-box-->
+                                {% endfor %}
+                            </div>
+
+
+                            <!--end of recommend-list-->
+                            {% if is_paginated %}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div align="center" id="paglink">
+                                        <ul class="pagination">
+                                            {% if page_obj.has_previous %}
+                                            <li><a href="?{{ page_request_var }}={{ page_obj.previous_page_number }}" rel="previous">&laquo;</a></li>
+                                            {% endif %}
+                                            <li class="active" ><span><a href="?{{ page_request_var }}={{ page_obj.number }}">{{ page_obj.number }}</a></span></li>
+                                            {% if page_obj.has_next %}
+                                            <li><a href="?{{ page_request_var }}={{ page_obj.next_page_number }}" rel="next">&raquo;</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                        </div>
+
+                        <!--end of slide-area-->
+
+                        <div class="sidebar-back"></div> 
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="bottom-height"></div>
+    </div>
+
+    {% include "scripts.html" %}
+
+    <script type="text/javascript">
+        $("#trending").addClass("active");
+    </script>
+
+
+</body>
+</html>

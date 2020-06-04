@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <head>
+    {% include "headlink.html" %}
+    <style type="text/css">
+      .list-inline {
+        text-align: center;
+      }
+      .list-inline > li {
+        margin: 10px 5px;
+        padding: 0;
+      }
+      .list-inline > li:hover {
+        cursor: pointer;
+      }
+      .list-inline .selected img {
+        opacity: 1;
+        border-radius: 15px;
+      }
+      .list-inline img {
+        opacity: 0.5;
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+      }
+      .list-inline img:hover {
+        opacity: 1;
+      }
+
+      .item > img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .carousel-inner .active {
+        background-color: none;
+      }
+
+      .carousel-inner .item {
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper_content">
+      {% include "navbar.html" %}
+
+      <div class="common-streamtube">
+        <div class="y-content">
+          <div class="row content-row">
+            <!-- left common menu which is called ymenu -->
+            {% include "menu.html"  with channels=channels %}
+            <div class="page-inner col-xs-12 col-sm-9 col-md-10">
+              <div class="row" id="slider">
+                <div class="col-md-12 banner-slider">
+                  <div id="myCarousel" class="carousel slide">
+                    <div class="carousel-inner">
+                      {% for bg in background %}
+                      <div
+                        {% if forloop.first %}
+                        class="active item"
+                        {% else %}
+                        class="item"
+                        {% endif %}
+                        data-slide-number="{{ forloop.counter0 }}"
+                        style="
+                          background-image: url({{bg.image.url}});
+                        "
+                      >
+                        <a
+                          href="/trending"
+                        >
+                          <div class="carousel-caption">
+                            <h3>{{bg.caption}}</h3>
+
+                            <div class="clearfix"></div>
+
+                            <p class="hidden-xs"></p>
+                          </div>
+                        </a>
+                      </div>
+                      {% endfor %}
+                    </div>
+
+                    <!-- Controls-->
+                    <a
+                      class="left carousel-control"
+                      href="#myCarousel"
+                      role="button"
+                      data-slide="prev"
+                    >
+                      <span
+                        class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a
+                      class="right carousel-control"
+                      href="#myCarousel"
+                      role="button"
+                      data-slide="next"
+                    >
+                      <span
+                        class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div id="flash_message_ajax"></div>
+
+              <!-- wishlist start -->
+
+              <!-- wishlist end -->
+
+              <hr />
+
+              {% for video in video_catList %}
+              <div class="slide-area">
+                <div class="box-head">
+                  <h3>Recent Videos</h3>
+                </div>
+
+                <div class="box">
+                  {% for vid in video %}
+                  <div class="slide-box">
+                    <div class="slide-image">
+                      <a href="{{vid.get_absolute_url}}">
+                        <img
+                          src="{% static 'streamtube/images/placeholder.gif' %}"
+                          data-src="{{ vid.thumbnail.url }}"
+                          class="slide-img1 placeholder"
+                        />
+                      </a>
+                      <div class="video_mobile_views">
+                        43 Views
+                      </div>
+                      <div class="video_duration">
+                        00:00:15
+                      </div>
+                    </div>
+                    <!--end of slide-image-->
+
+                    <div class="video-details">
+                      <div class="video-head">
+                        <a href="{{ vid.get_absolute_url }}">{{ vid.title }}</a>
+                      </div>
+
+                      <span class="video_views">
+                        <div><a href="{{ vid.get_absolute_url }}">{{ vid.channel.user.username }}</a></div>
+                        <div class="hidden-mobile">
+                          <i class="fa fa-eye"></i> {{vid.view_count}} Views <b>.</b> {{vid.timestamp|timesince}} ago
+                        </div>
+                      </span>
+                    </div>
+                    <!--end of video-details-->
+                  </div>
+                  {% endfor %}
+                  <!--end of slide-box-->
+                </div>
+                <!--end of box-->
+              </div>
+              <!--end of slide-area-->
+
+              <hr />
+              {% endfor %}
+
+              <div class="sidebar-back"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-height"></div>
+    </div>
+
+    {% include "scripts.html" %}
+
+    <script type="text/javascript">
+      $("#myCarousel").carousel({
+        interval: 3500,
+      });
+
+      // This event fires immediately when the slide instance method is invoked.
+      $("#myCarousel").on("slide.bs.carousel", function (e) {
+        var id = $(".item.active").data("slide-number");
+
+        // Added a statement to make sure the carousel loops correct
+        if (e.direction == "right") {
+          id = parseInt(id) - 1;
+          if (id == -1) id = 7;
+        } else {
+          id = parseInt(id) + 1;
+          if (id == $("[id^=carousel-thumb-]").length) id = 0;
+        }
+
+        $("[id^=carousel-thumb-]").removeClass("selected");
+        $("[id=carousel-thumb-" + id + "]").addClass("selected");
+      });
+
+      // Thumb control
+      $("[id^=carousel-thumb-]").click(function () {
+        var id_selector = $(this).attr("id");
+        var id = id_selector.substr(id_selector.length - 1);
+        id = parseInt(id);
+        $("#myCarousel").carousel(id);
+        $("[id^=carousel-thumb-]").removeClass("selected");
+        $(this).addClass("selected");
+      });
+    </script>
+
+    <script type="text/javascript">
+      $("#home").addClass("active");
+    </script>
+  </body>
+</html>

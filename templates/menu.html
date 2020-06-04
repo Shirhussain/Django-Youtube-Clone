@@ -1,0 +1,127 @@
+{% load static %}
+<div class="y-menu col-sm-3 col-md-2 scroll">
+    <ul class="y-home menu1">
+        <li id="home">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'images/sidebar/home-grey.png' %}" class="grey-img">
+                <img src="{% static 'images/sidebar/home-red.png' %}" class="red-img">
+                <span>Home</span>
+            </a>
+        </li>
+        <li id="trending">
+            <a href="{% url 'trending' %}">
+                <img src="{% static 'images/sidebar/trending-grey.png' %}" class="grey-img">
+                <img src="{% static 'images/sidebar/trending-red.png' %}" class="red-img">
+                <span>Trending</span>
+            </a>
+        </li>
+
+
+        <li id="channels">
+            <a href="{% url 'channels' %}">
+                <img src="{% static 'images/sidebar/search-grey.png' %}" class="grey-img">
+                <img src="{% static 'images/sidebar/search-red.png' %}" class="red-img">
+                <span>Browse Channels</span>
+            </a>
+        </li>
+
+
+        
+        <li id="history">
+            <a href="{% url 'history' %}">
+                <img src="{% static 'images/sidebar/history-grey.png' %}" class="grey-img">
+                <img src="{% static 'images/sidebar/history-red.png' %}" class="red-img">
+                <span>History</span>
+            </a>
+        </li>
+        <li id="settings">
+            <a href="{% url 'settings' %}">
+                <img src="{% static 'images/sidebar/settings-grey.png' %}" class="grey-img">
+                <img src="{% static 'images/sidebar/settings-red.png' %}" class="red-img">
+                <span>Settings</span>
+            </a>
+        </li>
+        <li id="wishlist">
+            <a href="{% url 'wishlist' %}">
+                <img src="{% static 'images/sidebar/heart-grey.png' %}" class="grey-img">
+                <img src="{% static 'images/sidebar/heart-red.png' %}" class="red-img">
+                <span>Wishlist</span>
+            </a>
+        </li>
+        <li id="my_channel">
+            <a href="{% url 'mychannels' %}">
+                <img src="{% static 'images/sidebar/channel-grey.png' %}" class="grey-img">
+                <img src="{% static 'images/sidebar/channel-red.png' %}" class="red-img">
+                <span>My Channels</span>
+            </a>
+        </li>
+
+        <li id="playlists">
+            <a href="{% url 'playlists' %}">
+                <img src="{% static 'images/sidebar/playlist-grey.png' %}" class="grey-img">
+                <img src="{% static 'images/sidebar/playlist-red.png' %}" class="red-img">
+                <span>Playlists</span>
+            </a>
+        </li>
+
+    </ul>
+
+
+    <ul class="y-home menu1" style="margin-top: 10px;">
+
+        <h3>Channels</h3>
+        {% for channel in channels %}
+        <li id="channels_237">
+            <a href="{{ channel.get_absolute_url }}"><img src="{{ channel.profile_picture.url }}">{{ channel.user.username }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+
+    <!-- ============PLAY STORE, APP STORE AND SHARE LINKS======= -->
+
+
+    <h3 class="menu-foot-head">Contact Us</h3>
+
+    <div class="nav-space">
+
+
+        <a href="https://www.facebook.com/Hu3in.Danishyar" target="_blank">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x social-fb"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse foot-share2"></i>
+            </span>
+        </a>
+
+
+
+        <a href="https://twitter.com/" target="_blank">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x social-twitter"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse foot-share2"></i>
+            </span>
+        </a>
+
+
+
+        <a href="https://www.linkedin.com/" target="_blank">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x social-linkedin"></i>
+                <i class="fa fa fa-linkedin fa-stack-1x fa-inverse foot-share2"></i>
+            </span>
+        </a>
+
+
+
+
+    </div>
+
+
+    <div class="menu4 top nav-space">
+        <p>Sign in now to see your channels and recommendations!</p>
+        <form method="get" action="http://streamtube.streamhash.com/login">
+            <button type="submit">Login</button>
+        </form>
+    </div>   
+
+</div>

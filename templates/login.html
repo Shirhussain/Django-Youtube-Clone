@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><head>
+    <title> Streamtube </title>  
+    {% include "headlink.html" %}
+
+</head>
+
+<body>
+
+    <div class="wrap">
+
+        <div class="streamtube-nav signup-nav">
+            <div class="row">
+                <div class="test col-xs-12">
+                    <a href="index.html" class="">
+                        <img src="{% static 'uploads/settings/8ded0209d13ab8ee4491e8bf981084953681f728.png' %}">
+                    </a>
+
+                    <ul class="nav navbar-nav pull-right">
+
+
+
+
+                        <li  class="dropdown">
+
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="margin-right: 5px;color: #cc181e"><i class="fa fa-globe"></i> <b class="caret"></b></a>
+
+                            <ul class="dropdown-menu" style="min-width: 70px;overflow: hidden;position: absolute;background: #fff;">
+
+
+                                <li class="" ><a href="index.html" style="">en</a></li>
+
+                                <li class="" ><a href="login.html" style="">es</a></li>
+                            </ul>
+
+                        </li>
+
+
+
+                    </ul>
+
+                    <div class="pull-right">
+
+                    </div>
+                </div><!--test end-->
+
+
+
+            </div><!--end of row-->
+        </div><!--end of streamtube-nav-->
+
+        <!-- <div class="clear-fix"></div> -->
+
+        <div class="login-space">
+
+            <div class="common-form login-common text-center">
+                <div id="flash_message_ajax"></div>
+
+                <div class="signup-head">
+                    <h3>Login</h3>
+                </div><!--end  of signup-head-->
+
+
+                <div class="social-form">
+                    <div class="social-btn">
+
+
+
+
+                        <div class="social-google">
+                            <form class="social-form form-horizontal" role="form" method="POST" action="http://streamtube.streamhash.com/social">
+                                <input type="hidden" value="google" name="provider" id="provider">
+
+                                <input type="hidden" name="timezone" value="" id="g-userTimezone">
+
+                                <a href="#">
+                                    <button type="submit">
+                                        <i class="fa fa-google-plus"></i>&nbsp;&nbsp;Login Via Google
+                                    </button>
+                                </a>
+                            </form>
+                        </div>
+
+
+                    </div><!--end of social-btn-->          
+                </div><!--end of socila-form-->
+
+                <p class="col-xs-12 divider1">OR</p>
+
+
+                <div class="sign-up login-page">
+                    <input type="hidden" name="_token" value="fiqYZCa5rWqCfph2jrxXRYpz5u7VcOaH7VYMVEja">
+
+
+                    <form class="signup-form login-form" role="form" method="POST" action="http://streamtube.streamhash.com/login">
+                        <div class="form-group">
+
+                            <label for="email">Email*</label>
+
+                            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" required value=""> 
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="password">Password*</label>
+
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Password" required value="">
+
+                            <span class="form-error">
+                            </span>
+
+                        </div>
+
+                        <input type="hidden" name="timezone" value="" id="userTimezone">
+
+                        <div class="change-pwd">
+                            <button type="submit" class="btn btn-primary signup-submit">Submit</button>
+                        </div>  
+                        <p>Create a new Account <a href="register.html">Register</a></p>
+                        <p> <a href="password/reset.html">Forgot Password?</a></p>           
+                    </form>
+                </div><!--end of sign-up-->
+
+            </div><!--end of common-form-->  
+
+        </div><!--end of form-background-->
+
+
+        <!-- <div class="bottom"></div> -->
+
+        <div class="bottom-height"></div>
+        {% include "footer.html" %}
+    </div> 
+
+    {% include "scripts.html" %}
+    
+    <script>
+        $(document).ready(function() {
+
+            var dMin = new Date().getTimezoneOffset();
+            var dtz = -(dMin/60);
+        // alert(dtz);
+        $("#userTimezone, #t-userTimezone,#f-userTimezone,#g-userTimezone").val(jstz.determine().name());
+    });
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <title> Streamtube </title>  
+    {% include "headlink.html" %}
+    
+    <link rel="stylesheet" href="{% static 'admin-css/plugins/datepicker/datepicker3.css' %}">
+
+</head>
+
+<body>
+
+    <div class="wrap">
+
+        <div class="streamtube-nav signup-nav">
+            <div class="row">
+                <div class="test col-xs-12">
+                    <a href="index.html" class="">
+                        <img src="uploads/settings/8ded0209d13ab8ee4491e8bf981084953681f728.png">
+                    </a>
+
+                    <ul class="nav navbar-nav pull-right">
+
+
+
+
+                        <li  class="dropdown">
+
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="margin-right: 5px;color: #cc181e"><i class="fa fa-globe"></i> <b class="caret"></b></a>
+
+                            <ul class="dropdown-menu" style="min-width: 70px;overflow: hidden;position: absolute;background: #fff;">
+
+
+                                <li class="" ><a href="index.html" style="">en</a></li>
+
+                                <li class="active" ><a href="login.html" style="background-color: #cc181e">es</a></li>
+                            </ul>
+
+                        </li>
+
+
+
+                    </ul>
+
+                    <div class="pull-right">
+
+                                    <!-- <div class="hidden-xs hidden-sm visible-md visible-lg">
+                    <a href="http://streamtube.streamhash.com/register" class="y-signin">Signup</a>
+                    <a href="http://streamtube.streamhash.com/login" class="y-signin">Login</a>
+                </div> -->
+                
+            </div>
+        </div><!--test end-->
+
+        
+
+    </div><!--end of row-->
+</div><!--end of streamtube-nav-->
+
+<!-- <div class="clear-fix"></div> -->
+
+<div class="login-space">
+    <div class="common-form login-common">
+
+        <div id="flash_message_ajax"></div>
+
+
+
+
+
+        <div class="alert alert-success"  >
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            successfully changed the language
+        </div>
+        
+        <div class="signup-head text-center">
+            <h3>Signup</h3>
+        </div><!--end  of signup-head-->
+
+
+        <div class="social-form">
+
+            <div class="social-btn">
+
+
+
+
+                <div class="social-google">
+                    <form class="social-form form-horizontal" role="form" method="POST" action="http://streamtube.streamhash.com/social">
+                        <input type="hidden" value="google" name="provider" id="provider">
+                        <input type="hidden" name="timezone" value="" id="g-userTimezone">
+
+                        <a href="#">
+                            <button type="submit">
+                                <i class="fa fa-google-plus"></i>Login Via Google
+                            </button>
+                        </a>
+                    </form>
+                </div>
+
+
+            </div><!--end of social-btn-->          
+        </div><!--end of socila-form-->
+
+        <p class="col-xs-12 divider1">OR</p>
+
+
+        <div class="sign-up">
+
+            <form class="signup-form" role="form" method="POST" action="http://streamtube.streamhash.com/register">
+
+                <input type="hidden" name="_token" value="fiqYZCa5rWqCfph2jrxXRYpz5u7VcOaH7VYMVEja">
+
+
+                <input type="hidden" value="" name="referral" id="referral">
+
+
+                <div class="form-group">
+                    <label for="name">Name*</label>
+                    <input type="text" required name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name" title="Accepts only alphanumeric with spaces" value="">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" required name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" value=""> 
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">DOB*</label>
+                    <input type="text" name="dob" class="form-control" placeholder="Enter DOB" id="dob" required autocomplete="off" value="">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password*</label>
+                    <input type="password" required name="password" min="6" class="form-control" id="password" placeholder="Password" value="">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password*</label>
+                    <input type="password" required name="password_confirmation" min="6" class="form-control" id="confirm_password" placeholder="Confirm Password" value="">
+                </div>
+
+                <input type="hidden" name="timezone" value="" id="userTimezone">
+
+                <div class="change-pwd">
+                    <button type="submit" class="btn btn-primary signup-submit">Submit</button>
+                </div>  
+                <p class="text-right">Already Have an Account? <a href="login.html">Login</a></p>         
+            </form>
+        </div><!--end of sign-up-->
+    </div><!--end of common-form-->     
+</div><!--form-background end-->
+
+
+<!-- <div class="bottom"></div> -->
+
+<div class="bottom-height"></div>
+<footer class="footer">
+    <div class="footer1 row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <div class="tube-image text-center">
+                <img src="uploads/settings/8ded0209d13ab8ee4491e8bf981084953681f728.png">
+            </div>                                 
+        </div><!--end of col-sm-2-->
+
+        <div class="col-sm-9 col-md-9 col-lg-9 foot-content">
+
+            <ul class="term">
+
+                <li><a  href="page_view/1.html" style="text-transform: capitalize;">About</a></li> | 
+
+                <li><a  href="page_view/2.html" style="text-transform: capitalize;">Terms And Conditions</a></li> | 
+
+                <li><a  href="page_view/3.html" style="text-transform: capitalize;">Privacy Policy</a></li> | 
+
+                <li><a  href="page_view/4.html" style="text-transform: capitalize;">Contact Us</a></li> | 
+
+                <li><a  href="page_view/9.html" style="text-transform: capitalize;">Help</a></li> | 
+                <li><a href="index.html" >&#169; 2020  Streamtube </a></li>
+            </ul>
+        </div>   
+    </div><!--end of footer1-->
+</footer>
+
+
+</div> 
+    {% include "scripts.html" %}
+    <script src="{% static 'admin-css/plugins/datepicker/bootstrap-datepicker.js' %}"></script> 
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            var max_age_limit = "18";
+
+            max_age_limit = max_age_limit ? "-"+max_age_limit+"y" : "-15y";
+
+            $('#dob').datepicker({
+                autoclose:true,
+                format : 'dd-mm-yyyy',
+                endDate: max_age_limit,
+            });
+
+            var dMin = new Date().getTimezoneOffset();
+
+            var dtz = -(dMin/60);
+            $("#userTimezone, #t-userTimezone,#f-userTimezone,#g-userTimezone").val(jstz.determine().name());
+        });
+
+    </script>
+
+
+    
+</body>
+</html>

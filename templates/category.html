@@ -1,0 +1,675 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+  <title> Streamtube </title>  
+  {% include "headlink.html" %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'streamtube/css/custom-style.css' %}"> 
+
+  <style>
+     #c4-header-bg-container {
+      background: #000;
+    }
+
+    @media  screen and (-webkit-min-device-pixel-ratio: 1.5),
+    screen and (min-resolution: 1.5dppx) {
+      #c4-header-bg-container {
+       background: #000;
+     }
+   }
+
+   #c4-header-bg-container .hd-banner-image {
+    background: #000;
+  }
+
+  .payment_class {
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 38px;
+    line-height: 19px;
+    padding: 0 !important;
+    font-weight: bolder !important;
+  }
+
+  .switch {
+   display: inline-block;
+   height: 23px;
+   position: relative;
+   width: 45px;
+   vertical-align: middle;
+  }
+  .switch input {
+   display: none;
+  }
+  .slider {
+   background-color: #ccc;
+   bottom: 0;
+   cursor: pointer;
+   left: 0;
+   position: absolute;
+   right: 0;
+   top: 0;
+   transition: all 0.4s ease 0s;
+  }
+  .slider::before {
+   background-color: white;
+   bottom: 4px;
+   content: "";
+   height: 16px;
+   left: 0px;
+   position: absolute;
+   transition: all 0.4s ease 0s;
+   width: 16px;
+  }
+
+  input:checked + .slider {
+   background-color: #51af33;
+  }
+  input:focus + .slider {
+   box-shadow: 0 0 1px #2196f3;
+  }
+  input:checked + .slider::before {
+   transform: translateX(26px);
+  }
+  .slider.round {
+   border-radius: 34px;
+  }
+  .slider.round::before {
+   border-radius: 50%;
+  }
+
+</style>
+
+
+<script></script>
+
+</head>
+
+<body>
+
+  <div class="wrapper_content">
+
+    {% include "navbar.html" %}
+
+    <div class="common-streamtube">
+
+
+      <div class="y-content">
+
+        <div class="row content-row">
+          {% include "menu.html" %}
+          <div class="page-inner col-sm-9 col-md-10">
+
+            <div class="slide-area1">
+              <div id="flash_message_ajax"></div>
+
+              <div class="branded-page-v2-top-row">
+
+                <div class="branded-page-v2-header channel-header yt-card">
+
+                  <div class="channel-content-spacing">
+                   <div class="branded-page-v2-header channel-header yt-card"> 
+                    <div id="gh-banner">
+                     <div id="c4-header-bg-container" class="c4-visible-on-hover-container  has-custom-banner" style="background-image: url({% static 'images/category1.jpg' %});background-position: bottom;">
+
+                     </div>
+                   </div>
+                 </div>
+
+
+                 <div>
+                  <div class="pull-left">
+                    <a class="channel-header-profile-image spf-link" href="#">
+                      <div style="background-image:url({% static 'uploads/categories/ab4e78ee3ecc02807c6fd743aa506b37a6395708.jpg' %});" class="channel-header-profile-image1"></div>
+                    </a>
+                  </div>
+                  <div class="pull-left">
+                    <h1 class="st_channel_heading text-uppercase mt-35">Hollywood Movies</h1>
+                  </div>
+
+                  <div class="clearfix"></div>
+
+                </div>
+
+                <div id="channel-subheader" class="clearfix branded-page-gutter-padding appbar-content-trigger">
+                  <ul id="channel-navigation-menu" class="clearfix nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                      <a href="#about_home" class="yt-uix-button  spf-link  yt-uix-sessionlink yt-uix-button-epic-nav-item yt-uix-button-size-default" aria-controls="home" role="tab" data-toggle="tab">
+                        <span class="yt-uix-button-content hidden-xs">About</span>
+                        <span class="visible-xs"><i class="fa fa-home channel-tab-icon"></i></span>
+                      </a>
+                    </li>
+                    <li role="presentation" id="videos_sec">
+                      <a href="#videos" class="yt-uix-button  spf-link  yt-uix-sessionlink yt-uix-button-epic-nav-item yt-uix-button-size-default" aria-controls="videos" role="tab" data-toggle="tab">
+                        <span class="yt-uix-button-content hidden-xs">Videos</span> 
+                        <span class="visible-xs"><i class="fa fa-video-camera channel-tab-icon"></i></span>
+                      </a>
+                    </li>
+                    <li role="presentation">
+                      <a href="#channels_category" class="yt-uix-button  spf-link  yt-uix-sessionlink yt-uix-button-epic-nav-item yt-uix-button-size-default" aria-controls="about" role="tab" data-toggle="tab">
+                        <span class="yt-uix-button-content hidden-xs">Channels</span> 
+                        <span class="visible-xs"><i class="fa fa-info channel-tab-icon"></i></span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ul class="tab-content">
+
+           <li role="tabpanel" class="tab-pane active" id="about_home">
+            <div class="recom-area abt-sec">
+             <div class="abt-sec-head">
+               <h5><p>Hollywood Movies</p>
+               </h5>
+             </div>
+           </div>
+         </li>
+
+         <li role="tabpanel" class="tab-pane" id="videos">
+
+          <div class="recom-area abt-sec">
+            <div class="abt-sec-head">
+
+              <div class="new-history1">
+                <div class="content-head">
+
+                </div><!--end of content-head-->
+
+
+                <ul class="history-list">
+
+
+
+                  <li class="sub-list row border-0">
+                    <div class="main-history">
+                      <div class="history-image">
+                        <a href="video/247.html"><img src="{% static 'uploads/images/252_1540634759_001.png' %}"></a>
+                        <div class="video_duration">
+                          00:00:30
+                        </div>                        
+                      </div><!--history-image-->
+
+                      <div class="history-title">
+                        <div class="history-head row">
+                          <div class="cross-title2">
+                            <h5 class="payment_class unset-height"><a href="video/247.html">Earth is cool</a></h5>
+
+                            <span class="video_views">
+                              <i class="fa fa-eye"></i> 262 Views <b>.</b> 
+                              26 Oct 2018
+                            </span>
+                          </div> 
+
+                          <!--end of cross-mark-->                       
+                        </div> <!--end of history-head--> 
+
+                        <div class="description">
+                         <div><p>Earth is the third planet from the Sun and the only astronomical object known to harbor life. According to radiometric dating and other sources of evidence, Earth formed over 4.5 billion years ago. Earth&#39;s gravity interacts with other objects in space, especially the Sun and the Moon, Earth&#39;s only natural satellite</p>
+                         </div>
+                       </div><!--end of description--> 
+
+                       <span class="stars">
+                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                        <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                        <a><i  class="fa fa-star" aria-hidden="true"></i></a>
+                        <a><i  class="fa fa-star" aria-hidden="true"></i></a>
+                      </span>                                                      
+                    </div><!--end of history-title--> 
+
+                  </div><!--end of main-history-->
+                </li>    
+
+
+
+                <li class="sub-list row border-0">
+                  <div class="main-history">
+                    <div class="history-image">
+                      <a href="video/256.html"><img src="{% static 'uploads/images/252_1540904570_001.png' %}"></a>
+                      <div class="video_duration">
+                        00:00:26
+                      </div>                        
+                    </div><!--history-image-->
+
+                    <div class="history-title">
+                      <div class="history-head row">
+                        <div class="cross-title2">
+                          <h5 class="payment_class unset-height"><a href="video/256.html">Fast Car Driving on a Straight Road</a></h5>
+
+                          <span class="video_views">
+                            <i class="fa fa-eye"></i> 600 Views <b>.</b> 
+                            29 Oct 2018
+                          </span>
+                        </div> 
+
+                        <!--end of cross-mark-->                       
+                      </div> <!--end of history-head--> 
+
+                      <div class="description">
+                       <div><p>A car driving at high speed is displaed in this video.</p>
+                       </div>
+                     </div><!--end of description--> 
+
+                     <span class="stars">
+                      <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                      <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                      <a><i  class="fa fa-star" aria-hidden="true"></i></a>
+                      <a><i  class="fa fa-star" aria-hidden="true"></i></a>
+                      <a><i  class="fa fa-star" aria-hidden="true"></i></a>
+                    </span>                                                      
+                  </div><!--end of history-title--> 
+
+                </div><!--end of main-history-->
+              </li>    
+
+
+
+              <li class="sub-list row border-0">
+                <div class="main-history">
+                  <div class="history-image">
+                    <a href="video/290.html"><img src="{% static 'uploads/images/240_1550236834_001.png' %}"></a>
+                    <div class="video_duration">
+                      00:00:12
+                    </div>                        
+                  </div><!--history-image-->
+
+                  <div class="history-title">
+                    <div class="history-head row">
+                      <div class="cross-title2">
+                        <h5 class="payment_class unset-height"><a href="video/290.html">Wind Turbine</a></h5>
+
+                        <span class="video_views">
+                          <i class="fa fa-eye"></i> 1K Views <b>.</b> 
+                          14 Feb 2019
+                        </span>
+                      </div> 
+
+                      <!--end of cross-mark-->                       
+                    </div> <!--end of history-head--> 
+
+                    <div class="description">
+                     <div><p>A Wind Turbine can be viewed in the video.</p>
+                     </div>
+                   </div><!--end of description--> 
+
+                   <span class="stars">
+                    <a><i  style="color:#ff0000"  class="fa fa-star" aria-hidden="true"></i></a>
+                    <a><i  class="fa fa-star" aria-hidden="true"></i></a>
+                    <a><i  class="fa fa-star" aria-hidden="true"></i></a>
+                    <a><i  class="fa fa-star" aria-hidden="true"></i></a>
+                    <a><i  class="fa fa-star" aria-hidden="true"></i></a>
+                  </span>                                                      
+                </div><!--end of history-title--> 
+
+              </div><!--end of main-history-->
+            </li>    
+
+
+
+            <span id="videos_list"></span>
+
+            <div id="video_loader" style="display: none;">
+
+              <h1 class="text-center"><i class="fa fa-spinner fa-spin" style="color:#ff0000"></i></h1>
+
+            </div>
+
+            <div class="clearfix"></div>
+
+
+            <button class="pull-right btn btn-info mb-15" onclick="getVideos()" style="color: #fff">View More</button>
+
+            <div class="clearfix"></div>
+
+          </ul>
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </li>
+
+  <li role="tabpanel" class="tab-pane" id="channels_category">
+
+    <div class="recom-area abt-sec">
+      <div class="abt-sec-head">
+
+        <div class="new-history1">
+          <div class="content-head">
+            <div><h4 style="color: #000;">Channels&nbsp;&nbsp;
+
+            </h4></div>            
+          </div><!--end of content-head-->
+
+
+          <ul class="history-list">
+
+
+
+            <li class="sub-list row border-0">
+              <div class="main-history">
+                <div class="history-image">
+                  <a href="channel/240.html" target="_blank"><img src="{% static 'uploads/channels/picture/6ed1105bf0e118d669057c1c13b0230d9f3cdf10.jpg' %}"></a>
+
+
+                  <div class="video_duration">
+                    8 Videos
+                  </div>                        
+                </div><!--history-image-->
+
+                <div class="history-title">
+                  <div class="history-head row">
+                    <div class="cross-title2">
+                      <h5 class="payment_class unset-height"><a href="channel/240.html" target="_blank">Avenue Nightclub</a></h5>
+
+                      <span class="video_views">
+                        <i class="fa fa-eye"></i> 37 Subscribers <b>.</b> 
+                        19 Apr 2019
+                      </span>
+                    </div> 
+
+                    <!--end of cross-mark-->                       
+                  </div> <!--end of history-head--> 
+
+                  <div class="description">
+                    <p>Watch videos of events in Edmonton</p>
+                  </div><!--end of description--> 
+
+
+                </div><!--end of history-title--> 
+
+              </div><!--end of main-history-->
+            </li>    
+
+
+
+            <li class="sub-list row border-0">
+              <div class="main-history">
+                <div class="history-image">
+                  <a href="channel/252.html" target="_blank"><img src="{% static 'uploads/channels/picture/25f1c22c5e12c99387590e9820293c195b83e0ca.jpg' %}"></a>
+
+
+                  <div class="video_duration">
+                    7 Videos
+                  </div>                        
+                </div><!--history-image-->
+
+                <div class="history-title">
+                  <div class="history-head row">
+                    <div class="cross-title2">
+                      <h5 class="payment_class unset-height"><a href="channel/252.html" target="_blank">Gaming</a></h5>
+
+                      <span class="video_views">
+                        <i class="fa fa-eye"></i> 15 Subscribers <b>.</b> 
+                        19 Apr 2019
+                      </span>
+                    </div> 
+
+                    <!--end of cross-mark-->                       
+                  </div> <!--end of history-head--> 
+
+                  <div class="description">
+                    <p>Gaming</p>
+                  </div><!--end of description--> 
+
+
+                </div><!--end of history-title--> 
+
+              </div><!--end of main-history-->
+            </li>    
+
+
+
+            <span id="category_channels_list"></span>
+
+            <div id="channels_loader" style="display: none;">
+
+              <h1 class="text-center"><i class="fa fa-spinner fa-spin" style="color:#ff0000"></i></h1>
+
+            </div>
+
+            <div class="clearfix"></div>
+
+
+            <button class="pull-right btn btn-info mb-15" onclick="getChannels()" style="color: #fff">View More</button>
+
+            <div class="clearfix"></div>
+
+          </ul>
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </li>
+
+</ul>
+
+<div class="sidebar-back"></div> 
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+<div class="bottom-height"></div>
+</div>
+{% include "scripts.html" %}
+          <script>
+
+
+            var stopScroll = false;
+
+            var searchLength = "3";
+
+            var stopPaymentScroll = false;
+
+            var searchChannelsLength = "2";
+
+
+            function getVideos() {
+
+              if (searchLength > 0) {
+
+               videos(searchLength);
+
+             }
+           }
+
+           function getChannels() {
+
+            if (searchChannelsLength > 0) {
+
+             channels(searchChannelsLength);
+
+           }
+         }
+
+
+    /*$(window).scroll(function() {
+
+	    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+
+	    	var value = $('ul#channel-navigation-menu').find('li.active').attr('id');
+
+	    	//alert(value);
+
+	    	if (value == 'videos_sec') {
+
+		    	if (!stopScroll) {
+
+					// console.log("New Length " +searchLength);
+
+					if (searchLength > 0) {
+
+						videos(searchLength);
+
+					}
+
+				}
+			}
+
+			if (value == 'payment_managment_sec') {
+
+				if (!stopPaymentScroll) {
+
+					// console.log("New Length " +searchLength);
+
+					if (searchChannelsLength > 0) {
+
+						payment_videos(searchChannelsLength);
+
+					}
+
+				}
+			}
+
+		}
+
+	});*/
+
+
+	function videos(cnt) {
+
+
+   category_id = "8";
+
+   $.ajax({
+
+    type : "post",
+
+    url : "http://streamtube.streamhash.com/categories/videos",
+
+    beforeSend : function () {
+
+      $("#video_loader").fadeIn();
+    },
+
+    data : {skip : cnt, category_id : category_id},
+
+    async : false,
+
+    success : function (data) {
+
+      $("#videos_list").append(data.view);
+
+      if (data.length == 0) {
+
+       stopScroll = true;
+
+     } else {
+
+       stopScroll = false;
+
+					// console.log(searchLength);
+
+					// console.log(data.length);
+
+					searchLength = parseInt(searchLength) + data.length;
+
+					// console.log("searchLength" +searchLength);
+
+				}
+
+			}, 
+
+			complete : function() {
+
+				$("#video_loader").fadeOut();
+
+			},
+
+			error : function (data) {
+
+
+			},
+
+   });
+
+ }
+
+
+ function channels(cnt) {
+
+   category_id = "8";
+
+   $.ajax({
+
+    type : "post",
+
+    url : "http://streamtube.streamhash.com/categories/channels",
+
+    beforeSend : function () {
+
+      $("#channels_loader").fadeIn();
+    },
+
+    data : {skip : cnt, category_id : category_id},
+
+    async : false,
+
+    success : function (data) {
+
+      $("#category_channels_list").append(data.view);
+
+      if (data.length == 0) {
+
+       stopPaymentScroll = true;
+
+     } else {
+
+       stopPaymentScroll = false;
+
+					// console.log(searchLength);
+
+					// console.log(data.length);
+
+					searchChannelsLength = parseInt(searchChannelsLength) + data.length;
+
+					// console.log("searchLength" +searchLength);
+
+				}
+
+			}, 
+
+			complete : function() {
+
+				$("#channels_loader").fadeOut();
+
+			},
+
+			error : function (data) {
+
+
+			},
+
+   });
+
+ }
+</script>
+
+<script type="text/javascript">
+  $("#categories_8").addClass("active");
+</script>
+
+
+</body>
+
+</html>
