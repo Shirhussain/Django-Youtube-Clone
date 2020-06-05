@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, reverse
 from django.views.generic.base import View, HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView, DetailView
-from .models import Video, Comment, Category, BackgroundImg, Channel, VideoView
+from .models import Video, Comment, Category, BackgroundImg, VideoView
+from user.models import Channel
 from . forms import CommentForm
 
 
@@ -20,7 +21,7 @@ class IndexView(View):
             category__title__iexact="Entertainment")
         Education = Video.objects.filter(category__title__iexact="Education")
         Sport = Video.objects.filter(category__title__iexact="Sport")
-        Funny = Video.objects.filter(category__title__iexact="Funny")
+        Funny = Video.objects.filter(category__title__iexact="Gamming")
         most_recent = Video.objects.order_by('-timestamp')[0:7]
 
         background = BackgroundImg.objects.all()

@@ -24,7 +24,7 @@ class Comment(models.Model):
 
 class Video(models.Model):
     title = models.CharField(max_length=50)
-    channel = models.ForeignKey('Channel', on_delete=models.CASCADE)
+    # channel = models.ForeignKey('Channel', on_delete=models.CASCADE)
     discription = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     thumbnail = models.ImageField("thumbnail")
@@ -50,7 +50,6 @@ class Video(models.Model):
             'pk': self.pk
         })
         
-class Profile(models.Model):
 
     @property
     def view_count(self):
@@ -76,7 +75,7 @@ class BackgroundImg(models.Model):
 class Thumb(models.Model):
     like = models.BooleanField(default=False)
     like_count = models.PositiveIntegerField(default=0)
-    dislike = models.BooleanField(default=0)
+    dislike = models.BooleanField(default=False)
     dislike_count = models.PositiveIntegerField(default=0)
 
 
@@ -87,18 +86,18 @@ class Category(models.Model):
         return self.title
 
 
-class Channel(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_picture = models.ImageField(upload_to="profile")
-    subscribe = models.BooleanField(default=False)
+# class Channel(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     profile_picture = models.ImageField(upload_to="profile")
+#     subscribe = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.user.username
+#     def __str__(self):
+#         return self.user.username
 
-    def get_absolute_url(self):
-        return reverse('channel', kwargs={
-            'pk': self.pk
-        })
+#     def get_absolute_url(self):
+#         return reverse('channel', kwargs={
+#             'pk': self.pk
+#         })
 
 
 class Wish(models.Model):
