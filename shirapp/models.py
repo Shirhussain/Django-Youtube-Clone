@@ -49,6 +49,8 @@ class Video(models.Model):
         return reverse('video', kwargs={
             'pk': self.pk
         })
+        
+class Profile(models.Model):
 
     @property
     def view_count(self):
